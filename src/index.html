@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <form id="form">
+      <div><label>Name: </label> <input id="name" type="text" /></div>
+
+      <button type="submit">Generate PDF</button>
+      <framework src="result.pdf"></framework>
+      <div id="resultPDF"><br /></div>
+    </form>
+    <script>
+      const { ipcRenderer, remote } = require("electron");
+     
+      const { saveAs } = require("file-saver");
+
+
+
+      const form = document.querySelector("#form");
+      form.addEventListener("submit", sendForm);
+      function sendForm(e) {
+        e.preventDefault();
+        let input_name = e.target.name.value;
+        let data = {
+          name: input_name,
+        };
+
+        result = new Promise((resolve, reject) => {
+          let res = ipcRenderer.invoke("submit", data);
+        
+          if (res) {
+            alert('Contrato gerado com sucesso!');
+              resolve(res);
+          } else {
+            reject();
+            alert('Ouve um erro! tente novamente');
+
+          }
+        });
+    
+      }
+    </script>
+  </body>
+</html>
