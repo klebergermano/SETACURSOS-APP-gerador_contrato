@@ -1,46 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="render.js" defer></script>
   </head>
   <body>
-    <form id="form">
-      <div><label>Name: </label> <input id="name" type="text" /></div>
+    <h1> SETA CURSOS - Gerador de Contrato</h1>
+    <div class='pagina'>
+    <form id="form_contrato">
+      <fieldset id='fieldset_resp'>
+      <div class='div_input'id='div_resp_nome' >
+        <label>Responsável: </label> 
+        <input id="resp_nome" type="text" />
+        <div>
+           <label id='label_checkbox_resp_aluno' for='checkbox_resp_aluno'>
+              Marcar como Aluno(a)
+            <input type='checkbox' id='checkbox_resp_aluno'>
+          </label>
+          </div>
+      </div>
+      <div class='div_input'id='div_resp_end' >
+      <label>Endereço: </label> <input id="resp_end" type="text" />
+          <label class='label_numero'>Nº:</label> 
+      <input class="end_numero" id='resp_numero' type="text" />
+      </div>
+      <div class='div_input'id='div_resp_bairro' ><label>Bairro: </label> <input id="resp_bairro" type="text" /></div>
+      <div class='div_input'id='div_resp_cep' ><label>CEP: </label> <input id="resp_cep" type="text" /></div>
+      <div class='div_input'id='div_resp_cpf' ><label>CPF: </label> <input id="resp_cpf" type="text" /></div>
+      <div class='div_input'id='div_resp_rg' ><label>RG: </label> <input id="resp_rg" type="text" /></div>
+      <div class='div_input'id='div_resp_cel' ><label>Cel.: </label> <input id="resp_cel" type="text" /></div>
+      <div class='div_input'id='div_resp_tel' ><label>Tel.: </label> <input id="resp_tel" type="text" /></div>
+      </fieldset>
+      <form id="form_contrato">
+        <fieldset id='fieldset_aluno' class='x'>
+   
+        <div class='div_input' id='div_aluno_nome'>
+          <div id='block_aluno'></div>
+        <label>Aluno(a): </label> 
+        <input id="aluno_nome" type="text" />
+                 <label id='label_parentesco'>Parentesco: </label>
+          <select id='aluno_parentesco'>
+            <option value="" default></option>
 
-      <button type="submit">Generate PDF</button>
-      <framework src="result.pdf"></framework>
-      <div id="resultPDF"><br /></div>
+            <option value="Filho(a)">Filho(a)</option>
+            <option value="Irmão(a)">Irmão(a)</option>
+            <option value="Sobrinho(a)">Sobrinho(a)</option>
+            <option value="Neto(a)">Neto(a)</option>
+            <option value="Entiado(a)">Entiado(a)</option>
+            <option value="Responsável Legal">Responsável Legal</option>
+          </select>
+        </div>
+             <div class='div_input' id='div_aluno_end'>
+              <label>Endereço: </label> <input id="aluno_end" type="text" />
+             <label class='label_numero'>Nº:</label> 
+      <input class="end_numero"  id='aluno_numero' type="text" />
+        </div>
+        <div class='div_input'id='div_aluno_bairro'><label>Bairro: </label> <input id="aluno_bairro" type="text" />
+        </div>
+        <div class='div_input'id='div_aluno_cep'><label>CEP: </label> <input id="aluno_cep" type="text" /></div>
+        <div class='div_input'id='div_aluno_rg'><label>RG: </label> <input id="aluno_rg" type="text" /></div>
+        <div class='div_input'id='div_aluno_cel'><label>Cel.: </label> <input id="aluno_cel" type="text" /></div>
+        <div class='div_input'id='div_aluno_tel'><label>Tel.: </label> <input id="aluno_tel" type="text" /></div>
+        </fieldset>
+      
+    <fieldset id='fieldset_curso'>
+      <div class='div_input' id='div_curso_nome'>
+        <label>Curso:</label> 
+        <select id='curso_nome'>
+          <option value='Informática Básico'>Informática Básico</option>
+          <option value='Informática Completo'>Informática Completo</option>
+          <option value='Inglês Básico'>Inglês Básico</option>
+          <option value='Inglês Intermediário'>Inglês Intermediário</option>
+          <option value='Inglês Avançado'>Inglês Avançado</option>
+          <option value='Excel Avançado'>Excel Avançado</option>
+          <option value='Banco de Dados Básico(MySQL)'>Banco de Dados Básico (MySQL)</option>
+          <option value='Reforço Escolar'>Reforço Escolar</option>
+        </select>
+      </div>
+      <div class='div_input' id='div_curso_valor'>
+        <label>Valor R$: </label>
+        <input id="curso_valor" type="text" />
+      </div>
+            <div class='div_input' id='div_curso_modulos'>
+        <label>Módulos: </label>
+        <input id="curso_modulos" type="text" />
+      </div>
+
+      <div class='div_input' id='div_curso_duracao'>
+        <label>D. Meses: </label>
+        <input id="curso_duracao" type="number" />
+      </div>
+      <div class='div_input' id='div_curso_duracao'>
+        <label>Parcelas: </label>
+        <input id="curso_parcelas" type="number" />
+      </div>
+      <div class='div_input' id='div_curso_vencimento'>
+        <label>Dia Venc.: </label> 
+        <input id="curso_vencimento" type="number" />
+      </div>
+      <div class='div_input' id='div_curso_inicio'>
+        <label>Data de Início: </label> 
+        <input id="curso_inicio" type="date" />
+      </div>
+      <div class='div_input' id='div_curso_data'>
+        <label>Data Contrato: </label> 
+        <input id="curso_data_contrato" type="date" />
+      </div>
+      <div class='div_input' id='div_curso_obs'>
+        <label>Observações: </label> 
+        <textarea placeholder="Descontos e outros detalhes aqui..."></textarea>
+      </div>
+    </fieldset>
+      <button id='btn_salvar' type="submit">Salvar Contrato</button>
     </form>
+  </div><!--pagina-->
+
     <script>
-      const { ipcRenderer, remote } = require("electron");
-     
-      const { saveAs } = require("file-saver");
-
-
-
-      const form = document.querySelector("#form");
-      form.addEventListener("submit", sendForm);
-      function sendForm(e) {
-        e.preventDefault();
-        let input_name = e.target.name.value;
-        let data = {
-          name: input_name,
-        };
-
-        result = new Promise((resolve, reject) => {
-          let res = ipcRenderer.invoke("submit", data);
-        
-          if (res) {
-            alert('Contrato gerado com sucesso!');
-              resolve(res);
-          } else {
-            reject();
-            alert('Ouve um erro! tente novamente');
-
-          }
-        });
-    
-      }
     </script>
   </body>
 </html>

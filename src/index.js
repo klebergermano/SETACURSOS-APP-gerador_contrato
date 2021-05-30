@@ -1,10 +1,11 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
-const pdf = require("html-pdf");
-const path = require("path");
-const fs = require("fs");
+const { app, BrowserWindow, Menu, ipcMain, globalShortcut, Tray } = require("electron");
 
-const { promisify } = require("util");
-const mv = promisify(fs.rename);
+const pdf = require("html-pdf");
+const fs = require("fs");
+const path = require("path");
+
+const TemplateContrato = require('./TemplateContrato');
+
 const downloadPath = app.getPath("downloads");
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -13,10 +14,14 @@ if (require("electron-squirrel-startup")) {
 }
 
 const createWindow = () => {
+const appIcon = new Tray(__dirname + '/assets/img/icon.png');
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    title: 'SETA CURSOS: Gerador de Contrato',
+    icon: __dirname + '/assets/img/icon.png',
+    width: 1200,
+    height: 800,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -29,12 +34,47 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  //Shortcuts
+  globalShortcut.register("CommandOrControl+Q", () => {
+    app.quit();
+  });
+
+// Create menu template
+const mainMenuTemplate = [
+  {
+    label: "Opções",
+    submenu: [
+
+ 
+      {
+        label: "Sair",
+        click() {
+          app.quit();
+        },
+      },
+    ],
+  },
+];
+
+  globalShortcut.register("CommandOrControl+I", () => {
+    mainWindow.webContents.toggleDevTools();
+  });
+
+  // Build menu from template
+  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+
+  // Insert menu
+ // Menu.setApplicationMenu(mainMenu);
+ 
 };
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", createWindow);
+
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
@@ -53,53 +93,27 @@ app.on("activate", () => {
   }
 });
 
-//PDF Template
-function createTemplatePDF(formData) {
-  return `<!DOCTYPE>
-  <html>
-  <head></head>
-  <body>
-  <h1>PDF</h1>
-    <div>
-    <h1>${formData.name}</h1>
-   
-    </div>  
-  </body>
-  </html>
-    `;
-}
+
 
 //create PDF
 function createPDF(data) {
-  const templatePDF = createTemplatePDF(data); // create template from the form inputs
+  const templateContrato = TemplateContrato(data); // create template from the form inputs
   return new Promise((resolve, reject) => {
     pdf
-      .create(templatePDF)
+      .create(templateContrato)
       .toFile(path.join(__dirname, "result.pdf"), (err, res) => {
         if (err) reject();
         else resolve(res);
       });
   });
 }
-//IPC Catch
-ipcMain.on("item:submit2", (e, item) => {
-  //item is the object with the infos of the form
-  const novoPDF = createPDF(item); // call the createPDF function
-  novoPDF
-    .then(() => {
-      console.log("PDF created!");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+
 
 ipcMain.handle("submit", async (event, data_info) => {
   const novoPDF = createPDF(data_info); // call the createPDF function
-
+console.log(data_info);
   return novoPDF
     .then((pdf) => {
-
       // Read the file
       let oldpath = `${__dirname}/result.pdf`;
       let newpath = `${downloadPath}/teste.pdf`;
@@ -129,5 +143,4 @@ ipcMain.handle("submit", async (event, data_info) => {
   
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+
