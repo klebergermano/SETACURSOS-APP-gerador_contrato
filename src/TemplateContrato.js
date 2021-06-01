@@ -1,9 +1,14 @@
-
-
+function converteData(data) {
+  let data_arr = data.split("-");
+  let ano = data_arr[0];
+  let mes = data_arr[1];
+  let dia = data_arr[2];
+  let f_data = dia + "/" + mes + "/" + ano;
+  return f_data;
+}
 const TemplateContrato =(data)=>{
 let curso;
 switch(true){
-
 
 case (/Informática/gmi).test(data.curso_nome) :  curso = 'Informática'
 break; 
@@ -18,6 +23,43 @@ break;
 
 default : 'NOP' 
 }
+
+let data_contrato = data.curso_data_contrato.split('-');
+let dia_contrato = data_contrato[2];
+let mes_contrato = data_contrato[1];
+let ano_contrato = data_contrato[0];
+let f_mes_contrato; 
+
+switch(mes_contrato){
+  case '01' : f_mes_contrato = 'Janeiro' 
+  break;
+  case '02' : f_mes_contrato = 'Fevereiro' 
+  break;
+  case '03' : f_mes_contrato = 'Março' 
+  break;
+  case '04' : f_mes_contrato = 'Abril' 
+  break;
+  case '05' : f_mes_contrato = 'Maio' 
+  break;
+  case '06' : f_mes_contrato = 'Junho' 
+  break;
+  case '07' : f_mes_contrato = 'Julho' 
+  break;
+  case '08' : f_mes_contrato = 'Agosto' 
+  break;
+  case '09' : f_mes_contrato = 'Setembro' 
+  break;
+  case '10' : f_mes_contrato = 'Outubro' 
+  break;
+  case '11' : f_mes_contrato = 'Novembro' 
+  break;
+  case '12' : f_mes_contrato = 'Dezembro' 
+  break;
+
+};
+let data_contrato_extenso = "São Paulo - SP, "+dia_contrato+' de '+f_mes_contrato+' de '+ ano_contrato;
+
+
 
    return( `
 <!DOCTYPE html>
@@ -86,6 +128,12 @@ p{
 #assinaturas div span{
   padding-bottom:10px;
     display:block;
+}
+
+#folha_4{
+  
+  max-height:29.6cm !important;
+  overflow:hidden !important;
 }
     </style>
   </head>
@@ -190,7 +238,7 @@ na Cidade de São Paulo, no Estado de São Paulo.
           
 Cláusula 10ª. Pelos serviços prestados, o CONTRATANTE pagará à CONTRATADA a quantidade de 
 <em>${data.curso_parcelas}</em>
-parcelas de <em>${data.curso_valor},</em> a serem pagas até o dia: 
+parcelas de <em>R$ ${data.curso_valor},</em> a serem pagas até o dia: 
 <em>${data.curso_vencimento}</em> de cada mês, sendo estas parcelas
  referentes a cada mês de duração do curso <em>${data.curso_nome}</em>. 
         </p>
@@ -232,8 +280,8 @@ parcelas de <em>${data.curso_valor},</em> a serem pagas até o dia:
   </div id='prazo'>
   <h2>DO PRAZO</h2>
   <p>
-    Cláusula 18ª. O presente contrato terá prazo de <em>${data.curso_duracao}</em> 
-    iniciando-se no dia <em>${data.curso_inicio}</em>, e terminado no dia <em>${data.curso_conclusao}</em>. 
+    Cláusula 18ª. O presente contrato terá prazo de <em>${data.curso_duracao} meses; </em> 
+    Iniciando-se no dia <em>${converteData(data.curso_inicio)}</em>, e terminado no dia <em>${converteData(data.curso_conclusao)}</em>. 
     Podendo este período ser estendido ou ajustado caso ambas as partes, CONTRATADA e CONTRATANTE, 
     estejam de comum acordo, recebendo este documento um novo anexo com o justo e acertado.
   </p>
@@ -284,7 +332,7 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
       para fins de direito. 
     </p>
     <p>
-      São Paulo - SP, 25 de Janeiro de 2021
+      ${data_contrato_extenso}
     </p>
   </div>
 </br>
@@ -310,6 +358,9 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
 
     `
 )
+
+
+
 }
 
     

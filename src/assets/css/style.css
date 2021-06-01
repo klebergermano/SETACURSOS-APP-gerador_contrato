@@ -483,6 +483,12 @@ h1 {
 #form_contrato #fieldset_curso label, #form_contrato #fieldset_curso input, #form_contrato #fieldset_curso select {
   height: 27px !important;
 }
+#form_contrato #fieldset_curso #div_curso_modulos {
+  width: 100% !important;
+}
+#form_contrato #fieldset_curso #div_curso_modulos input {
+  width: 80%;
+}
 #form_contrato #fieldset_curso #div_curso_nome {
   width: 66.666%;
 }
@@ -491,9 +497,14 @@ h1 {
 }
 #form_contrato #fieldset_curso #div_curso_nome select {
   width: 80%;
+  padding: 1px 0px 3px 5px;
 }
 #form_contrato #fieldset_curso #div_curso_valor {
   width: 33.3333%;
+}
+#form_contrato #fieldset_curso #div_curso_valor input {
+  color: green;
+  font-size: 16px;
 }
 #form_contrato #fieldset_curso #div_curso_data, #form_contrato #fieldset_curso #div_curso_inicio {
   width: 50% !important;
@@ -547,8 +558,8 @@ h1 {
   float: right;
   margin: 2px 5px 0px 7px;
 }
-#form_contrato #div_resp_nome .active {
-  background: #185abc;
+#form_contrato label:has(> b) {
+  background: #f90 !important;
 }
 #form_contrato #block_aluno {
   display: none;

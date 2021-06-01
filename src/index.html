@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="render.js" defer></script>
+ 
   </head>
   <body>
     <h1> SETA CURSOS - Gerador de Contrato</h1>
@@ -16,6 +17,7 @@
            <label id='label_checkbox_resp_aluno' for='checkbox_resp_aluno'>
               Marcar como Aluno(a)
             <input type='checkbox' id='checkbox_resp_aluno'>
+        
           </label>
           </div>
       </div>
@@ -40,7 +42,7 @@
         <input id="aluno_nome" type="text" />
                  <label id='label_parentesco'>Parentesco: </label>
           <select id='aluno_parentesco'>
-            <option value="" default></option>
+            <option value="" selected="true" disabled="disabled"></option>
 
             <option value="Filho(a)">Filho(a)</option>
             <option value="Irmão(a)">Irmão(a)</option>
@@ -64,17 +66,21 @@
         </fieldset>
       
     <fieldset id='fieldset_curso'>
-      <div class='div_input' id='div_curso_nome'>
+      <div class='div_input' name='teste' id='div_curso_nome'>
         <label>Curso:</label> 
         <select id='curso_nome'>
-          <option value='Informática Básico'>Informática Básico</option>
-          <option value='Informática Completo'>Informática Completo</option>
-          <option value='Inglês Básico'>Inglês Básico</option>
-          <option value='Inglês Intermediário'>Inglês Intermediário</option>
-          <option value='Inglês Avançado'>Inglês Avançado</option>
-          <option value='Excel Avançado'>Excel Avançado</option>
-          <option value='Banco de Dados Básico(MySQL)'>Banco de Dados Básico (MySQL)</option>
-          <option value='Reforço Escolar'>Reforço Escolar</option>
+          <option selected="true" disabled="disabled"></option>
+          <option name='IFB' value='Informática Básico'>Informática Básico</option>
+          <option name='IFC' value='Informática Completo'>Informática Completo</option>
+          <option name='IGB' value='Inglês Básico'>Inglês Básico</option>
+          <option name='IGM' value='Inglês Intermediário'>Inglês Intermediário</option>
+          <option name='IGA' value='Inglês Avançado'>Inglês Avançado</option>
+          <option name='IGK1' value='Inglês KIDS-1'>Inglês KIDS-1</option>
+          <option name='IGK2' value='Inglês KIDS-2'>Inglês KIDS-2</option>
+          <option name='IGK3' value='Inglês KIDS-3'>Inglês KIDS-3</option>
+          <option name='EXA' value='Excel Avançado'>Excel Avançado</option>
+          <option name='BDB' value='Banco de Dados Básico(MySQL)'>Banco de Dados Básico (MySQL)</option>
+          <option name='RFE' value='Reforço Escolar'>Reforço Escolar</option>
         </select>
       </div>
       <div class='div_input' id='div_curso_valor'>
@@ -108,7 +114,7 @@
       </div>
       <div class='div_input' id='div_curso_obs'>
         <label>Observações: </label> 
-        <textarea placeholder="Descontos e outros detalhes aqui..."></textarea>
+        <textarea id='curso_obs' placeholder="Descontos e outros detalhes aqui..."></textarea>
       </div>
     </fieldset>
       <button id='btn_salvar' type="submit">Salvar Contrato</button>

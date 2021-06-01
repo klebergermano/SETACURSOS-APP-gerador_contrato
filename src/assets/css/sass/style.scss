@@ -2,7 +2,7 @@
 * {
   box-sizing: border-box;
 }
-
+ 
 $primary-color: #154fa5;
 
 body {
@@ -108,6 +108,7 @@ padding:0px;
   }
   /*-------------------CURSO FIELDS--------------*/
   #fieldset_curso {
+
     .div_input {
      // border: 1px solid #666;
       float: left;
@@ -143,16 +144,20 @@ padding:0px;
         height:27px !important;
     }
 
- 
+ #div_curso_modulos{
+   width:100% !important;
+   input{width:80%;}
+ }
 
     #div_curso_nome{
         width:66.666%;
         label{width:20% !important;}
-        select{ width:80%;}
+        select{ width:80%; padding:1px 0px 3px 5px;}
     
     }
     #div_curso_valor{
         width:33.3333%;
+        input{color:green; font-size:16px; }
 
     
     }
@@ -186,8 +191,6 @@ padding:0px;
   #div_resp_nome{
     
     div{ 
- 
-    
       overflow: hidden;
       label{
        user-select:none;
@@ -211,11 +214,12 @@ padding:0px;
  
     }
       }
-      .active{
-        background:lighten($primary-color, 5%)
-       
-      }
+    
 
+  }
+
+  label:has(> b){
+    background:#f90 !important;
   }
 
 #block_aluno{
