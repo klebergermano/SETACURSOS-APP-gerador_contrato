@@ -155,7 +155,7 @@ p{
   bairro:&nbsp;<em>${data.resp_bairro}</em>, 
   CEP:&nbsp;<em>${data.resp_cep}</em>, na Cidade de São Paulo, no Estado de São Paulo; 
   responsável pelo <b>ALUNO(a):</b>&nbsp;<em>${data.aluno_nome}</em>, 
-  que possui vinculo parental de: <em>${data.aluno_parentesco}</em>, 
+  que possui vínculo parental de: <em>${data.aluno_parentesco}</em>, 
  portador do R.G.:&nbsp;<em>${data.aluno_rg}</em>, 
  residente e domiciliado em:&nbsp;<em>${data.aluno_end}</em>,
  número:&nbsp;<em>${data.aluno_numero}</em>, 
@@ -170,8 +170,8 @@ na Cidade de São Paulo, no Estado de São Paulo.
    neste ato representada pelo seu responsável: Cristian Germano. 
 </p>
 <p>
-  As partes acima identificadas como CONTRATANTE E CONTRATADA têm, entre si, justo e acertado o presente <b> Contrato de Prestação de
-  Serviços de Ensino de <em>${curso}</em> </b>, que se regerá pelas cláusulas seguintes e pelas condições descritas no presente. 
+  As partes acima identificadas como CONTRATANTE E CONTRATADA têm, entre si, justo e acertado o presente <em>Contrato de Prestação de
+  Serviços de Ensino de ${curso}</em>, que se regerá pelas cláusulas seguintes e pelas condições descritas no presente. 
 </p>
       </div><!--indentificacao_contratantes-->
       <div id='objeto_contrato'>

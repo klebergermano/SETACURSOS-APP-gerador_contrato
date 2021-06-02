@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcMain, globalShortcut, Tray } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, globalShortcut, Tray, dialog } = require("electron");
 
 const pdf = require("html-pdf");
 const fs = require("fs");
@@ -33,7 +33,7 @@ const appIcon = new Tray(__dirname + '/assets/img/icon.png');
   mainWindow.loadFile(path.join(__dirname, "index.html"));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   //Shortcuts
   globalShortcut.register("CommandOrControl+Q", () => {
@@ -65,7 +65,7 @@ const mainMenuTemplate = [
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
 
   // Insert menu
- // Menu.setApplicationMenu(mainMenu);
+  Menu.setApplicationMenu(mainMenu);
  
 };
 
@@ -116,7 +116,7 @@ console.log(data_info);
     .then((pdf) => {
       // Read the file
       let oldpath = `${__dirname}/result.pdf`;
-      let newpath = `${downloadPath}/teste.pdf`;
+      let newpath = `${downloadPath}/CONTRATO-${data_info.resp_nome}-${data_info.curso_nome}.pdf`;
 
      fs.readFile(oldpath, function (err, data) {
           if (err) throw err;
@@ -126,7 +126,13 @@ console.log(data_info);
           fs.writeFile(newpath, data, function (err) {
             if (err) throw err;
             console.log("File written!");
-          
+           dialog.showMessageBoxSync(
+             {type: 'info',
+               title: "SETA CURSOS - Contrato",
+               message: `Contrato gerado com sucesso em: ${downloadPath}`,
+           
+              }
+             );
           });
         // Delete the file
         fs.unlink(oldpath, function (err) {

@@ -1,4 +1,4 @@
-const { ipcRenderer, remote } = require("electron");
+const { ipcRenderer, remote, NodeEventEmitter } = require("electron");
 const VMasker = require("vanilla-masker");
 const form = document.querySelector("#form_contrato");
 form.addEventListener("submit", sendForm);
@@ -161,7 +161,7 @@ function sendForm(e) {
   e.preventDefault();
   let conclusao = new Date(e.target.curso_inicio.value);
   conclusao.setMonth(
-    conclusao.getMonth() + parseInt(e.target.curso_parcelas.value)
+    conclusao.getMonth() + parseInt(e.target.curso_duracao.value)
   );
 
   let dia = String(conclusao.getDate()+1).padStart(2, "0");
@@ -220,13 +220,20 @@ let f_conclusao = ano+'-'+mes+'-'+dia;
 
   result = new Promise((resolve, reject) => {
     let res = ipcRenderer.invoke("submit", data);
-
+    
+    document.querySelector('#loading_contrato').style.display = 'block';
     if (res) {
-      alert("Contrato gerado com sucesso!");
       resolve(res);
+      
     } else {
       reject();
-      alert("Ouve um erro! tente novamente");
+      //alert("Ouve um erro! tente novamente");
     }
   });
+
+  result.then(()=>{
+    document.querySelector('#loading_contrato').style.display = 'none';
+
+  });
 }
+       

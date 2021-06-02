@@ -365,6 +365,7 @@ h1 {
 }
 
 .pagina {
+  position: relative;
   background: #fcfcfc;
   padding: 20px;
   width: 700px;
@@ -374,6 +375,7 @@ h1 {
 }
 
 #form_contrato {
+  position: relative;
   padding: 0px;
   width: 100%;
   display: block;
@@ -558,8 +560,8 @@ h1 {
   float: right;
   margin: 2px 5px 0px 7px;
 }
-#form_contrato label:has(> b) {
-  background: #f90 !important;
+#form_contrato #div_resp_nome .active {
+  background: #185abc;
 }
 #form_contrato #block_aluno {
   display: none;
@@ -585,6 +587,40 @@ h1 {
 }
 #form_contrato #btn_salvar:active {
   background: #12448e;
+}
+
+#loading_contrato {
+  display: none;
+  z-index: 5;
+  top: -20px;
+  left: -50px;
+  width: 120%;
+  height: 1200px;
+  position: absolute;
+  background: rgba(80, 80, 90, 0.2);
+}
+#loading_contrato h3 {
+  font-size: 14px;
+  background: #154fa5;
+  width: 30%;
+  color: #fff;
+  text-align: center;
+  left: 35%;
+  position: fixed;
+  padding: 20px 0px;
+  position: absolute;
+  top: 20%;
+}
+#loading_contrato h3 img {
+  width: 45px;
+  height: auto;
+  margin: 0 20px 0px 20px;
+  float: left;
+}
+#loading_contrato h3 span {
+  margin-top: 15px;
+  margin-right: 20px;
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */
