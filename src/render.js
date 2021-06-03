@@ -46,7 +46,7 @@ function insertCursoInfo(e) {
     switch (curso) {
       case "IFB":
         cursoInfo = {
-          modulos: "Windows, Pacote Office Básico , Internet",
+          modulos: "Introducão, Sistemas Operacionais, Internet.",
           valor: "90,00",
           duracao: "6",
           parcelas: "6",
@@ -54,7 +54,7 @@ function insertCursoInfo(e) {
         break;
       case "IFC":
         cursoInfo = {
-          modulos: "Windows, Pacote Office, Redes, Internet, Hardware",
+          modulos: "Windows, Pacote Office, Redes, Internet, Hardware, Redes, Hardware.",
           valor: "90,00",
           duracao: "12",
           parcelas: "12",
@@ -62,7 +62,7 @@ function insertCursoInfo(e) {
         break;
       case "IGB":
         cursoInfo = {
-          modulos: "Básico, Pré Intermediário",
+          modulos: "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
           valor: "120,00",
           duracao: "12",
           parcelas: "12",
@@ -70,14 +70,14 @@ function insertCursoInfo(e) {
         break;
       case "IGM":
         cursoInfo = {
-          modulos: "Intermediário, Pré Avançado",
+          modulos: "Vocabulário, Pronunciação, Gramática.",
           valor: "120,00",
           duracao: "12",
           parcelas: "12",
         };
       case "IGK1":
         cursoInfo = {
-          modulos: "Intermediário, Pré Avançado",
+          modulos: "Intermediário, Pré Avançado.",
           valor: "120,00",
           duracao: "12",
           parcelas: "12",
@@ -85,7 +85,7 @@ function insertCursoInfo(e) {
 
       case "IGK2":
         cursoInfo = {
-          modulos: "Intermediário, Pré Avançado",
+          modulos: "Intermediário, Pré Avançado.",
           valor: "120,00",
           duracao: "12",
           parcelas: "12",
@@ -93,7 +93,7 @@ function insertCursoInfo(e) {
 
       case "IGK3":
         cursoInfo = {
-          modulos: "Intermediário, Pré Avançado",
+          modulos: "Intermediário, Pré Avançado.",
           valor: "120,00",
           duracao: "12",
           parcelas: "12",
@@ -101,7 +101,7 @@ function insertCursoInfo(e) {
         break;
       case "IGA":
         cursoInfo = {
-          modulos: "Avançado",
+          modulos: "Avançado.",
           valor: "120,00",
           duracao: "12",
           parcelas: "12",
@@ -109,7 +109,7 @@ function insertCursoInfo(e) {
         break;
       case "EXA":
         cursoInfo = {
-          modulos: "Avançado",
+          modulos: "Avançado.",
           valor: "140,00",
           duracao: "6",
           parcelas: "6",

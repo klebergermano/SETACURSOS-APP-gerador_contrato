@@ -1,8 +1,8 @@
 {
-  "name": "create-electron-app",
-  "productName": "create-electron-app",
+  "name": "seta-cursos-app-contrato",
+  "productName": "seta-cursos-app-contrato",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Gerador de Contratos SETA CURSOS-ME",
   "main": "src/index.js",
 
 
