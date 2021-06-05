@@ -126,6 +126,14 @@ h1 {
     opacity: 0 !important;
     margin-bottom: 0px;
   }
+
+  .display_off {
+    height: 1px !important;
+    padding: 0px;
+    opacity: 0 !important;
+    margin: 0px 0px -10px 0px !important;
+
+  }
   /*-------------------CURSO FIELDS--------------*/
 
   #fieldset_curso {
@@ -134,6 +142,7 @@ h1 {
     width:100%;
     border:1px solid #466592;
     padding:20px;
+   
     .row {
      display:flex;
      gap:10px;
@@ -184,8 +193,9 @@ h1 {
       #div_curso_modulos{
         textarea{ min-height:55px ; color:#445; font-size:13px;}
       }
-      #curso_valor, #curso_total{ color:green; font-size:16px;}
-      #curso_desconto{ color:red; font-size:16px;}
+      #curso_valor, #curso_desconto, #curso_total{ font-size:16px;}
+      #curso_total{ color:green; }
+      #curso_desconto{ color:red; }
       
 
 
@@ -200,13 +210,31 @@ h1 {
       margin-top:10px;
       background:#dddde3;
       padding:10px;
+      overflow: hidden;
+      padding-bottom:0px;
+
       select, input{ height:30px;}
-      textarea{width:100%;}
+
+      #div_combo_textarea{
+     
+
+        textarea{
+        margin: 10px 0px 10px 0px;
+
+          padding:5px;
+          width:100%;
+          height:90px;
+          transition: height 0.7s, padding 0.7s, opacity 0.7s, margin 0.7s; 
+  
+        }
+      }
+
       #label_check_combo{
         margin-right:5px;
-        background:#ed1860;
+       
+        background:#334;
         color:#fff;
-        padding:6px 5px;
+        padding:8px 5px  7px 10px;
         cursor:pointer;
         user-select: none;
         float:left;
@@ -215,10 +243,16 @@ h1 {
         &:active{
          background:darken($secondary-color, 10%);
         }
-        span{float:left; margin-top:5px;}
+        span{float:left; margin-top:7px;}
         input{float:right;}
 
       }
+      .check_combo_checked{
+        background:#ed1860 !important;
+        color:#f90;
+      
+      }
+
       #div_combo_curso_1{
         input{
         pointer-events: none;

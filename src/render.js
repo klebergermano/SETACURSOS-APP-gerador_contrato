@@ -8,13 +8,21 @@ const btnRespAluno = document.querySelector("#label_checkbox_resp_aluno");
 btnRespAluno.addEventListener("input", checkboxRespAluno);
 
 const btnCombo = document.querySelector("#label_check_combo");
-btnCombo.addEventListener("input", comboTextarea);
+btnCombo.addEventListener("input", inputComboCheckbox);
 
 //Curso Inputs
 const cursoSelect = document.querySelector("#curso_nome");
 cursoSelect.addEventListener("change", insertCursoInfo);
 
 let valor = document.querySelector("#curso_valor");
+let desconto = document.querySelector("#curso_desconto");
+let total = document.querySelector("#curso_total");
+
+valor.addEventListener('input', insertTotal);
+desconto.addEventListener('input', insertTotal);
+
+
+
 let modulos = document.querySelector("#curso_modulos");
 let duracao = document.querySelector("#curso_duracao");
 let parcelas = document.querySelector("#curso_parcelas");
@@ -36,21 +44,69 @@ vencimento.value = dia;
 
 //Geras as mascaras dos campos usando o vanilla-masker
 VMasker(document.querySelector("#curso_valor")).maskMoney();
+VMasker(document.querySelector("#curso_desconto")).maskMoney();
+
+
 VMasker(document.querySelector("#resp_cpf")).maskPattern("999.999.999-99");
 VMasker(document.querySelector("#resp_rg")).maskPattern("99.999.999-S");
 VMasker(document.querySelector("#aluno_rg")).maskPattern("99.999.999-S");
 
+
+
+
+function insertTotal(){
+
+
+  let v = valor.value.replace(",", "").replace(".", "") ;
+  let d = desconto.value.replace(",", "").replace(".", "") ;
+let res = v - d; 
+let t = VMasker.toMoney((v - d), {showSignal:true});
+total.value = t;
+
+
+  
+  }
+
+
+
 //Insere as informações dos cursos nos inputs baseado em qual curso for selecionado.
+function inputComboCheckbox(e){
+  if(!e.target.checked){
+    e.target.parentElement.classList.remove('check_combo_checked');
+    comboTextarea(e)
+
+  }else{
+    e.target.parentElement.classList.add('check_combo_checked');
+    comboTextarea(e)
+
+  }
+}
+
 
 function comboTextarea(e){
-let comboTextArea = document.querySelector('#combo_textarea');
-comboTextArea.innerHTML = 'O RESPONSÁVEL recebera desconto de  R$40,00 em cada parcela, onde o valor'+
-'passará a ser R$ 50,00 pelo periodo estipulado, refente ao COMBO dos cursos "Informática" '+
-'e "Inglês Completo", *Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos ' +
-'(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos).';
-            
+
+let divComboTextArea = document.querySelector('#div_combo_textarea');
+let textarea = divComboTextArea.children[0];
+
+
+if(e.target.checked){
+ //divComboTextArea.children[0].style.opacity= "1";
+ textarea.classList.remove('display_off');
+ textarea.innerHTML = 'O RESPONSÁVEL recebera desconto de  R$40,00 em cada parcela, onde o valor'+
+  'passará a ser R$ 50,00 pelo periodo estipulado, refente ao COMBO dos cursos "Informática" '+
+  'e "Inglês Completo", *Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos ' +
+  '(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos).';
+
+}else{
+ // divComboTextArea.children[0].style.opacity= "0";
+  textarea.classList.add('display_off');
 
 }
+
+
+
+}
+
 
 function insertCursoInfo(e) {
   var select = document.getElementById("curso_nome");
@@ -155,13 +211,14 @@ function insertCursoInfo(e) {
     duracao.value = res.duracao;
     parcelas.value = res.parcelas;
     modulos.value = res.modulos;
+  }).then(()=>{
+    insertTotal();
   });
 }
 
 //Remove e reinsere o aluno usando css transition em ".aluno_off"
 function checkboxRespAluno(e) {
   e.target.parentElement.classList.toggle("active");
-
   let fieldset_aluno = document.querySelector("#fieldset_aluno");
   if (e.target.parentElement.classList.contains("active")) {
     fieldset_aluno.classList.add("aluno_off");
