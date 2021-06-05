@@ -379,12 +379,10 @@ h1 span {
 
 #form_contrato {
   position: relative;
-  padding: 0px;
+  padding: 20px;
   width: 100%;
   display: block;
-  max-width: 660px;
   height: auto;
-  min-width: 500px;
   font-size: 14px;
   color: #333;
   overflow: hidden;
@@ -392,30 +390,39 @@ h1 span {
 }
 #form_contrato fieldset {
   border: 0px solid #ddd;
-  border-collapse: collapse;
   margin: 5px;
   margin-bottom: 20px;
   border: 1px solid #aaa;
   padding: 20px;
+  width: 100%;
 }
 #form_contrato label {
-  display: block;
-  float: left;
   padding: 5px 0px 0px 5px;
-  flex: 1;
-  max-width: 50px;
 }
 #form_contrato input {
-  padding: 5px;
-  display: block;
-  flex: 2;
   border-radius: 0px 3px 3px 0px;
   border: 1px solid #aaa;
+  padding: 5px;
+}
+#form_contrato textarea {
+  resize: vertical;
 }
 #form_contrato #fieldset_resp,
 #form_contrato #fieldset_aluno {
   position: relative;
   overflow: hidden;
+}
+#form_contrato #fieldset_resp label,
+#form_contrato #fieldset_aluno label {
+  display: block;
+  float: left;
+  flex: 1;
+  max-width: 50px;
+}
+#form_contrato #fieldset_resp input,
+#form_contrato #fieldset_aluno input {
+  display: block;
+  flex: 2;
 }
 #form_contrato #fieldset_resp .div_input,
 #form_contrato #fieldset_aluno .div_input {
@@ -457,79 +464,121 @@ h1 span {
   opacity: 0 !important;
   margin-bottom: 0px;
 }
-#form_contrato #fieldset_curso .div_input {
-  float: left;
-  width: 33.333%;
-  overflow: hidden;
+#form_contrato #fieldset_curso {
+  margin: 5px;
+  height: auto;
+  width: 100%;
+  border: 1px solid #466592;
+  padding: 20px;
+}
+#form_contrato #fieldset_curso .row {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 1;
   padding: 5px;
+  min-height: 40px;
+  clear: both;
 }
-#form_contrato #fieldset_curso label {
-  width: 110px !important;
-  padding-left: 20px;
-  max-width: 55% !important;
-  display: block;
-  background: #eeeeef;
-  overflow: hidden;
-  float: left;
-  border-radius: 3px 0px 0px 3px;
+#form_contrato #fieldset_curso .row .div_input {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: row;
 }
-#form_contrato #fieldset_curso input {
-  width: 85px;
-  float: right;
-  border-color: #afafbb;
+#form_contrato #fieldset_curso .row .div_input:first-child label {
+  text-align: left;
 }
-#form_contrato #fieldset_curso select {
-  flex: 2;
-  width: 190px;
-  padding: 5px;
-  font-size: 15px;
-  border-color: #afafbb;
+#form_contrato #fieldset_curso .row .div_input label {
+  color: #555;
+  padding: 0px 0px 0px 10px;
+  background: #dddde3;
+  width: 100px;
+  max-width: 100px;
+  display: flex;
+  align-items: center;
 }
-#form_contrato #fieldset_curso label, #form_contrato #fieldset_curso input, #form_contrato #fieldset_curso select {
-  height: 27px !important;
+#form_contrato #fieldset_curso .row .div_input input {
+  width: 75px;
 }
-#form_contrato #fieldset_curso #div_curso_modulos {
-  width: 100% !important;
+#form_contrato #fieldset_curso .row .div_input select {
+  width: 100%;
 }
-#form_contrato #fieldset_curso #div_curso_modulos input {
-  width: 80%;
+#form_contrato #fieldset_curso .row .div_input select .informatica {
+  color: #154fa5;
 }
-#form_contrato #fieldset_curso #div_curso_nome {
-  width: 66.666%;
+#form_contrato #fieldset_curso .row .div_input select .ingles {
+  color: #cf0675;
 }
-#form_contrato #fieldset_curso #div_curso_nome label {
-  width: 20% !important;
+#form_contrato #fieldset_curso .row .div_input select .excel {
+  color: green;
 }
-#form_contrato #fieldset_curso #div_curso_nome select {
-  width: 80%;
-  padding: 1px 0px 3px 5px;
+#form_contrato #fieldset_curso .row .div_input select .bd {
+  color: #ad593a;
 }
-#form_contrato #fieldset_curso #div_curso_valor {
-  width: 33.3333%;
+#form_contrato #fieldset_curso .row .div_input select .re {
+  color: #702e70;
 }
-#form_contrato #fieldset_curso #div_curso_valor input {
+#form_contrato #fieldset_curso .row .div_input textarea {
+  width: 100%;
+}
+#form_contrato #fieldset_curso .row #div_curso_modulos textarea {
+  min-height: 55px;
+  color: #445;
+  font-size: 13px;
+}
+#form_contrato #fieldset_curso .row #curso_valor, #form_contrato #fieldset_curso .row #curso_total {
   color: green;
   font-size: 16px;
 }
-#form_contrato #fieldset_curso #div_curso_data, #form_contrato #fieldset_curso #div_curso_inicio {
-  width: 50% !important;
+#form_contrato #fieldset_curso .row #curso_desconto {
+  color: red;
+  font-size: 16px;
 }
-#form_contrato #fieldset_curso #div_curso_data label, #form_contrato #fieldset_curso #div_curso_inicio label {
-  width: 130px !important;
+#form_contrato #fieldset_curso .row #div_curso_inicio label, #form_contrato #fieldset_curso .row #div_curso_data label {
+  width: 40%;
+  max-width: 50%;
 }
-#form_contrato #fieldset_curso #div_curso_data input, #form_contrato #fieldset_curso #div_curso_inicio input {
-  width: 164px;
+#form_contrato #fieldset_curso .row #div_curso_inicio input, #form_contrato #fieldset_curso .row #div_curso_data input {
+  width: 60%;
 }
-#form_contrato #fieldset_curso #div_curso_obs {
+#form_contrato #fieldset_curso #div_curso_combo {
+  margin-top: 10px;
+  background: #dddde3;
+  padding: 10px;
+}
+#form_contrato #fieldset_curso #div_curso_combo select, #form_contrato #fieldset_curso #div_curso_combo input {
+  height: 30px;
+}
+#form_contrato #fieldset_curso #div_curso_combo textarea {
   width: 100%;
 }
-#form_contrato #fieldset_curso #div_curso_obs label {
-  width: 160px !important;
+#form_contrato #fieldset_curso #div_curso_combo #label_check_combo {
+  margin-right: 5px;
+  background: #ed1860;
+  color: #fff;
+  padding: 6px 5px;
+  cursor: pointer;
+  user-select: none;
+  float: left;
+  width: 25%;
 }
-#form_contrato #fieldset_curso #div_curso_obs textarea {
-  width: 100%;
-  resize: vertical;
-  min-height: 60px;
+#form_contrato #fieldset_curso #div_curso_combo #label_check_combo:active {
+  background: #c30f4c;
+}
+#form_contrato #fieldset_curso #div_curso_combo #label_check_combo span {
+  float: left;
+  margin-top: 5px;
+}
+#form_contrato #fieldset_curso #div_curso_combo #label_check_combo input {
+  float: right;
+}
+#form_contrato #fieldset_curso #div_curso_combo #div_combo_curso_1 input {
+  pointer-events: none;
+  background: #f0f0f0;
+}
+#form_contrato #fieldset_curso #div_curso_combo #div_combo_curso_1, #form_contrato #fieldset_curso #div_curso_combo #div_combo_curso_2 {
+  width: 32%;
+  float: left;
 }
 #form_contrato #div_resp_nome,
 #form_contrato #div_resp_end,
@@ -577,12 +626,12 @@ h1 span {
 }
 #form_contrato #btn_salvar {
   float: right;
-  margin: 20px;
+  margin-top: 40px;
   background: #154fa5;
   color: #fff;
   border: 0px;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 15px 30px;
   cursor: pointer;
 }
 #form_contrato #btn_salvar:hover {

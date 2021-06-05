@@ -71,33 +71,36 @@
         <div class='div_input'id='div_aluno_tel'><label>Tel.: </label> <input id="aluno_tel" type="text" /></div>
         </fieldset>
       
-    <fieldset id='fieldset_curso'>
+      <div id='fieldset_curso'>
+      <div class='row'>
       <div class='div_input' name='teste' id='div_curso_nome'>
         <label>Curso:</label> 
         <select id='curso_nome'>
           <option selected="true" disabled="disabled"></option>
-          <option name='IFB' value='Informática Básico'>Informática Básico</option>
-          <option name='IFC' value='Informática Completo'>Informática Completo</option>
-          <option name='IGB' value='Inglês Básico'>Inglês Básico</option>
-          <option name='IGM' value='Inglês Intermediário'>Inglês Intermediário</option>
-          <option name='IGA' value='Inglês Avançado'>Inglês Avançado</option>
-          <option name='IGK1' value='Inglês KIDS-1'>Inglês KIDS-1</option>
-          <option name='IGK2' value='Inglês KIDS-2'>Inglês KIDS-2</option>
-          <option name='IGK3' value='Inglês KIDS-3'>Inglês KIDS-3</option>
-          <option name='EXA' value='Excel Avançado'>Excel Avançado</option>
-          <option name='BDB' value='Banco de Dados Básico(MySQL)'>Banco de Dados Básico (MySQL)</option>
-          <option name='RFE' value='Reforço Escolar'>Reforço Escolar</option>
+          <option class='informatica' name='IFB' value='Informática Básico'>Informática Básico</option>
+          <option class='informatica' name='IFC' value='Informática Completo'>Informática Completo</option>
+          <option class='ingles' name='IGB' value='Inglês Básico'>Inglês Básico</option>
+          <option class='ingles' name='IGM' value='Inglês Intermediário'>Inglês Intermediário</option>
+          <option class='ingles' name='IGA' value='Inglês Avançado'>Inglês Avançado</option>
+          <option class='ingles' name='IGK1' value='Inglês KIDS-1'>Inglês KIDS-1</option>
+          <option class='ingles' name='IGK2' value='Inglês KIDS-2'>Inglês KIDS-2</option>
+          <option class='ingles' name='IGK3' value='Inglês KIDS-3'>Inglês KIDS-3</option>
+          <option class='excel' name='EXA' value='Excel Avançado'>Excel Avançado</option>
+          <option class='bd' name='BDB' value='Banco de Dados Básico(MySQL)'>Banco de Dados Básico (MySQL)</option>
+          <option class='re' name='RFE' value='Reforço Escolar'>Reforço Escolar</option>
         </select>
       </div>
-      <div class='div_input' id='div_curso_valor'>
-        <label>Valor R$: </label>
-        <input id="curso_valor" type="text" />
-      </div>
-            <div class='div_input' id='div_curso_modulos'>
-        <label>Módulos: </label>
-        <input id="curso_modulos" type="text" />
-      </div>
+    </div><!--row-->
 
+      <div class='row'>
+        <div class='div_input' id='div_curso_modulos'>
+        <label id='label_curso_modulos'>Módulos: </label>
+
+        <textarea id="curso_modulos" spellcheck="false"></textarea>
+      </div>
+    </div><!--row-->
+ 
+    <div class='row'>
       <div class='div_input' id='div_curso_duracao'>
         <label>D. Meses: </label>
         <input id="curso_duracao" type="number" />
@@ -110,6 +113,28 @@
         <label>Dia Venc.: </label> 
         <input id="curso_vencimento" type="number" />
       </div>
+    </div><!--row-->
+
+
+    <div class='row'>
+      <div class='div_input' id='div_curso_valor'>
+        <label>Valor R$: </label>
+        <input id="curso_valor" type="text"  value='0,00'/>
+      </div>
+      <div class='div_input' id='div_curso_desconto'>
+       
+        <label for='curso_desconto'> Desconto R$: </label> 
+        <input id="curso_desconto" type="text" value='0,00'/>
+      </div>
+      <div class='div_input' id='div_curso_total'>
+
+        <label>Total R$: </label> 
+        <input id="curso_total" type="text" value='0,00'/>
+        </div>
+
+    </div><!--row-->
+
+    <div class='row'>
       <div class='div_input' id='div_curso_inicio'>
         <label>Data de Início: </label> 
         <input id="curso_inicio" type="date" />
@@ -118,11 +143,53 @@
         <label>Data Contrato: </label> 
         <input id="curso_data_contrato" type="date" />
       </div>
+    </div><!--row-->
+  
+      <div class='div_input' id='div_curso_combo'>
+       <div id='combo_bloco_1'>
+          <label id='label_check_combo' for='check_combo'>
+            <span>Desconto Combo </span>
+            <input id='check_combo' type='checkbox'/>
+          </label>
+          <div id='div_combo_curso_1'>
+            <label>Curso 1:</label>
+            <input  id='combo_curso_1' disabled='disabled' type='text' value='Inglês Completo'/>
+          </div><!--div_combo_curso_1-->
+          <div id='div_combo_curso_2'>
+            <label  >Curso 2:</label>
+            <select id='combo_curso_2' >
+              <option selected="true" disabled="disabled"></option>
+              <option name='IFB' value='Informática Básico'>Informática Básico</option>
+              <option name='IFC' value='Informática Completo'>Informática Completo</option>
+              <option name='IGB' value='Inglês Básico'>Inglês Básico</option>
+              <option name='IGM' value='Inglês Intermediário'>Inglês Intermediário</option>
+              <option name='IGA' value='Inglês Avançado'>Inglês Avançado</option>
+              <option name='IGK1' value='Inglês KIDS-1'>Inglês KIDS-1</option>
+              <option name='IGK2' value='Inglês KIDS-2'>Inglês KIDS-2</option>
+              <option name='IGK3' value='Inglês KIDS-3'>Inglês KIDS-3</option>
+              <option name='EXA' value='Excel Avançado'>Excel Avançado</option>
+              <option name='BDB' value='Banco de Dados Básico(MySQL)'>Banco de Dados Básico (MySQL)</option>
+              <option name='RFE' value='Reforço Escolar'>Reforço Escolar</option>
+            </select>
+          </div><!--div_combo_curso_2-->
+
+        </div><!--combo_bloco_1-->
+       
+        <div id='div_combo_textarea'>      
+          <label  >Referente a: </label> 
+           <textarea spellcheck="false" id='combo_textarea'>
+            </textarea>
+        </div>
+
+      </div><!--div_curso_combo-->
+      <div class='row'>
+
       <div class='div_input' id='div_curso_obs'>
         <label>Observações: </label> 
         <textarea id='curso_obs' placeholder="Descontos e outros detalhes aqui..."></textarea>
       </div>
-    </fieldset>
+
+    </div><!--div_fieldset-->
       <button id='btn_salvar' type="submit">Salvar Contrato</button>
     </form>
   </div><!--pagina-->

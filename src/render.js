@@ -7,6 +7,9 @@ form.addEventListener("submit", sendForm);
 const btnRespAluno = document.querySelector("#label_checkbox_resp_aluno");
 btnRespAluno.addEventListener("input", checkboxRespAluno);
 
+const btnCombo = document.querySelector("#label_check_combo");
+btnCombo.addEventListener("input", comboTextarea);
+
 //Curso Inputs
 const cursoSelect = document.querySelector("#curso_nome");
 cursoSelect.addEventListener("change", insertCursoInfo);
@@ -38,6 +41,17 @@ VMasker(document.querySelector("#resp_rg")).maskPattern("99.999.999-S");
 VMasker(document.querySelector("#aluno_rg")).maskPattern("99.999.999-S");
 
 //Insere as informações dos cursos nos inputs baseado em qual curso for selecionado.
+
+function comboTextarea(e){
+let comboTextArea = document.querySelector('#combo_textarea');
+comboTextArea.innerHTML = 'O RESPONSÁVEL recebera desconto de  R$40,00 em cada parcela, onde o valor'+
+'passará a ser R$ 50,00 pelo periodo estipulado, refente ao COMBO dos cursos "Informática" '+
+'e "Inglês Completo", *Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos ' +
+'(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos).';
+            
+
+}
+
 function insertCursoInfo(e) {
   var select = document.getElementById("curso_nome");
   var curso = select.options[select.selectedIndex].getAttribute("name");
@@ -46,7 +60,7 @@ function insertCursoInfo(e) {
     switch (curso) {
       case "IFB":
         cursoInfo = {
-          modulos: "Introducão, Sistemas Operacionais, Internet.",
+          modulos: "Introdução a Informática, Dispositivos Eletrônicos, Pacote Office Básico, Windows Básico, Digitação, Introdução ao Hardware, Redes Básico, Internet.",
           valor: "90,00",
           duracao: "6",
           parcelas: "6",
@@ -54,7 +68,7 @@ function insertCursoInfo(e) {
         break;
       case "IFC":
         cursoInfo = {
-          modulos: "Windows, Pacote Office, Redes, Internet, Hardware, Redes, Hardware.",
+          modulos: "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Atualização e Formatação, Windows, Digitação, Hardware, Redes, Internet, Backup e Segurança, Gerenciamento de Dados.",
           valor: "90,00",
           duracao: "12",
           parcelas: "12",
