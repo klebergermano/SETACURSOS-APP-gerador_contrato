@@ -692,4 +692,8 @@ h1 span {
   display: block;
 }
 
+.red {
+  color: red !important;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -59,8 +59,16 @@ function insertTotal(){
 
   let v = valor.value.replace(",", "").replace(".", "") ;
   let d = desconto.value.replace(",", "").replace(".", "") ;
-let res = v - d; 
-let t = VMasker.toMoney((v - d), {showSignal:true});
+let res =  ""+ (v - d); 
+console.log('res', res);
+if (res.search("-")) {
+total.classList.remove('red');
+} else {
+total.classList.add('red');
+  
+}
+
+let t = VMasker.toMoney(res, {showSignal:true});
 total.value = t;
 
 
