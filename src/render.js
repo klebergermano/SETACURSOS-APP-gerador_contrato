@@ -14,15 +14,23 @@ btnCombo.addEventListener("input", inputComboCheckbox);
 const cursoSelect = document.querySelector("#curso_nome");
 cursoSelect.addEventListener("change", insertCursoInfo);
 
+
+let combo_curso_1 = document.querySelector("#combo_curso_1");
+
+let combo_curso_2 = document.querySelector("#combo_curso_2");
+combo_curso_2.addEventListener("input", insertComboTextarea);
+
 let valor = document.querySelector("#curso_valor");
 let desconto = document.querySelector("#curso_desconto");
+
+
 let total = document.querySelector("#curso_total");
 
-valor.addEventListener('input', insertTotal);
-desconto.addEventListener('input', insertTotal);
+valor.addEventListener("input", insertTotal);
+desconto.addEventListener("input", insertTotal);
+desconto.addEventListener("change", insertComboTextarea);
 
-
-
+let combo_textarea = document.querySelector("#combo_textarea");
 let modulos = document.querySelector("#curso_modulos");
 let duracao = document.querySelector("#curso_duracao");
 let parcelas = document.querySelector("#curso_parcelas");
@@ -36,7 +44,6 @@ let dia = String(fullDate.getDate()).padStart(2, "0");
 let mes = String(fullDate.getMonth() + 1).padStart(2, "0");
 let ano = String(fullDate.getFullYear()).padStart(2, "0");
 
-
 let today = ano + "-" + mes + "-" + dia;
 data_contrato.value = today;
 inicio.value = today;
@@ -46,75 +53,69 @@ vencimento.value = dia;
 VMasker(document.querySelector("#curso_valor")).maskMoney();
 VMasker(document.querySelector("#curso_desconto")).maskMoney();
 
-
 VMasker(document.querySelector("#resp_cpf")).maskPattern("999.999.999-99");
 VMasker(document.querySelector("#resp_rg")).maskPattern("99.999.999-S");
 VMasker(document.querySelector("#aluno_rg")).maskPattern("99.999.999-S");
 
-
-
-
-function insertTotal(){
-
-
-  let v = valor.value.replace(",", "").replace(".", "") ;
-  let d = desconto.value.replace(",", "").replace(".", "") ;
-let res =  ""+ (v - d); 
-console.log('res', res);
-if (res.search("-")) {
-total.classList.remove('red');
-} else {
-total.classList.add('red');
-  
-}
-
-let t = VMasker.toMoney(res, {showSignal:true});
-total.value = t;
-
-
-  
+function insertTotal() {
+  let v = valor.value.replace(",", "").replace(".", "");
+  let d = desconto.value.replace(",", "").replace(".", "");
+  let res = "" + (v - d);
+  if (res.search("-")) {
+    total.classList.remove("red");
+  } else {
+    total.classList.add("red");
   }
-
-
+  let t = VMasker.toMoney(res, { showSignal: true });
+  total.value = t;
+}
 
 //Insere as informações dos cursos nos inputs baseado em qual curso for selecionado.
-function inputComboCheckbox(e){
-  if(!e.target.checked){
-    e.target.parentElement.classList.remove('check_combo_checked');
-    comboTextarea(e)
+function inputComboCheckbox(e) {
+  if (!e.target.checked) {
+    e.target.parentElement.classList.remove("check_combo_checked");
+    comboTextarea(e);
+  } else {
+    e.target.parentElement.classList.add("check_combo_checked");
+    comboTextarea(e);
+  }
+}
 
-  }else{
-    e.target.parentElement.classList.add('check_combo_checked');
-    comboTextarea(e)
+function comboTextarea(e) {
+  let divComboTextArea = document.querySelector("#div_combo_textarea");
+  if (e.target.checked) {
+    btnCombo.style.left = "10px";
+    combo_textarea.classList.remove("display_off");
+    combo_curso_2.parentElement.style.opacity = '1'
+    combo_curso_1.parentElement.style.opacity = '1'
+
+    combo_curso_2.style['pointer-events'] = 'auto'
+
+
+    insertComboTextarea();
+  } else {
+    btnCombo.style.left = "37.5%";
+
+    combo_textarea.classList.add("display_off");
+    combo_curso_1.parentElement.style.opacity = '0.0';
+    combo_curso_2.parentElement.style.opacity = '0.0';
+    combo_curso_2.style['pointer-events'] = 'none';
+
 
   }
 }
 
-
-function comboTextarea(e){
-
-let divComboTextArea = document.querySelector('#div_combo_textarea');
-let textarea = divComboTextArea.children[0];
-
-
-if(e.target.checked){
- //divComboTextArea.children[0].style.opacity= "1";
- textarea.classList.remove('display_off');
- textarea.innerHTML = 'O RESPONSÁVEL recebera desconto de  R$40,00 em cada parcela, onde o valor'+
-  'passará a ser R$ 50,00 pelo periodo estipulado, refente ao COMBO dos cursos "Informática" '+
-  'e "Inglês Completo", *Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos ' +
-  '(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos).';
-
-}else{
- // divComboTextArea.children[0].style.opacity= "0";
-  textarea.classList.add('display_off');
-
+function insertComboTextarea() {
+  combo_textarea.innerHTML = 
+    '<p>'+
+    'O RESPONSÁVEL recebera desconto de R$ <span class="red">'+ desconto.value +'</span>'+
+    ' referente ao <b>COMBO de CURSO</b><b>('+combo_curso_1.value+'</b> e <b>'+combo_curso_2.value+'</b>)em cada parcela, onde o valor' +
+    'passará a ser R$ <span class="green"><b>'+total.value +'</b></span> pelo periodo estipulado, refente ao COMBO dos cursos "Informática" ' +
+    'e "Inglês Completo", *Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos ' +
+    "(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos)."+
+    '</p>'
+    ;
 }
-
-
-
-}
-
 
 function insertCursoInfo(e) {
   var select = document.getElementById("curso_nome");
@@ -124,7 +125,9 @@ function insertCursoInfo(e) {
     switch (curso) {
       case "IFB":
         cursoInfo = {
-          modulos: "Introdução a Informática, Dispositivos Eletrônicos, Pacote Office Básico, Windows Básico, Digitação, Introdução ao Hardware, Redes Básico, Internet.",
+          nome: e.target.value,
+          modulos:
+            "Introdução a Informática, Dispositivos Eletrônicos, Pacote Office Básico, Windows Básico, Digitação, Introdução ao Hardware, Redes Básico, Internet.",
           valor: "90,00",
           duracao: "6",
           parcelas: "6",
@@ -132,7 +135,9 @@ function insertCursoInfo(e) {
         break;
       case "IFC":
         cursoInfo = {
-          modulos: "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Atualização e Formatação, Windows, Digitação, Hardware, Redes, Internet, Backup e Segurança, Gerenciamento de Dados.",
+          nome: e.target.value,
+          modulos:
+            "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Atualização e Formatação, Windows, Digitação, Hardware, Redes, Internet, Backup e Segurança, Gerenciamento de Dados.",
           valor: "90,00",
           duracao: "12",
           parcelas: "12",
@@ -140,7 +145,9 @@ function insertCursoInfo(e) {
         break;
       case "IGB":
         cursoInfo = {
-          modulos: "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
+          nome: e.target.value,
+          modulos:
+            "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
           valor: "120,00",
           duracao: "12",
           parcelas: "12",
@@ -148,6 +155,7 @@ function insertCursoInfo(e) {
         break;
       case "IGM":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Vocabulário, Pronunciação, Gramática.",
           valor: "120,00",
           duracao: "12",
@@ -155,6 +163,7 @@ function insertCursoInfo(e) {
         };
       case "IGK1":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Intermediário, Pré Avançado.",
           valor: "120,00",
           duracao: "12",
@@ -163,6 +172,7 @@ function insertCursoInfo(e) {
 
       case "IGK2":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Intermediário, Pré Avançado.",
           valor: "120,00",
           duracao: "12",
@@ -171,6 +181,7 @@ function insertCursoInfo(e) {
 
       case "IGK3":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Intermediário, Pré Avançado.",
           valor: "120,00",
           duracao: "12",
@@ -179,6 +190,7 @@ function insertCursoInfo(e) {
         break;
       case "IGA":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Avançado.",
           valor: "120,00",
           duracao: "12",
@@ -187,6 +199,7 @@ function insertCursoInfo(e) {
         break;
       case "EXA":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Avançado.",
           valor: "140,00",
           duracao: "6",
@@ -195,6 +208,7 @@ function insertCursoInfo(e) {
         break;
       case "BDB":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Avançado",
           valor: "140,00",
           duracao: "6",
@@ -203,6 +217,7 @@ function insertCursoInfo(e) {
         break;
       case "RFE":
         cursoInfo = {
+          nome: e.target.value,
           modulos: "Avançado",
           valor: "100,00",
           duracao: "3",
@@ -214,14 +229,20 @@ function insertCursoInfo(e) {
     resolve(cursoInfo);
   });
 
-  setCursoInfo.then((res) => {
-    valor.value = res.valor;
-    duracao.value = res.duracao;
-    parcelas.value = res.parcelas;
-    modulos.value = res.modulos;
-  }).then(()=>{
-    insertTotal();
-  });
+  setCursoInfo
+    .then((res) => {
+      valor.value = res.valor;
+      duracao.value = res.duracao;
+      parcelas.value = res.parcelas;
+      modulos.value = res.modulos;
+      combo_curso_1.value = res.nome;
+    })
+    .then(() => {
+      insertTotal();
+    }).then(()=>{
+      insertComboTextarea();
+      
+    });
 }
 
 //Remove e reinsere o aluno usando css transition em ".aluno_off"
@@ -243,14 +264,11 @@ function sendForm(e) {
     conclusao.getMonth() + parseInt(e.target.curso_duracao.value)
   );
 
-  let dia = String(conclusao.getDate()+1).padStart(2, "0");
+  let dia = String(conclusao.getDate() + 1).padStart(2, "0");
   let mes = String(conclusao.getMonth() + 1).padStart(2, "0");
   let ano = String(conclusao.getFullYear()).padStart(2, "0");
 
-
-let f_conclusao = ano+'-'+mes+'-'+dia;
-
-
+  let f_conclusao = ano + "-" + mes + "-" + dia;
 
   let data = {
     resp_nome: e.target.resp_nome.value,
@@ -299,20 +317,17 @@ let f_conclusao = ano+'-'+mes+'-'+dia;
 
   result = new Promise((resolve, reject) => {
     let res = ipcRenderer.invoke("submit", data);
-    
-    document.querySelector('#loading_contrato').style.display = 'block';
+
+    document.querySelector("#loading_contrato").style.display = "block";
     if (res) {
       resolve(res);
-      
     } else {
       reject();
       //alert("Ouve um erro! tente novamente");
     }
   });
 
-  result.then(()=>{
-    document.querySelector('#loading_contrato').style.display = 'none';
-
+  result.then(() => {
+    document.querySelector("#loading_contrato").style.display = "none";
   });
 }
-       
