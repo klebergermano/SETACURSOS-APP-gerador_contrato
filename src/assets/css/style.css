@@ -555,8 +555,11 @@ h1 span {
 }
 #form_contrato #fieldset_curso #div_curso_combo {
   margin-top: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
   background: #dddde3;
   padding: 10px;
+  padding-bottom: 15px;
   overflow: hidden;
   position: relative !important;
 }
@@ -568,7 +571,7 @@ h1 span {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 3px;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px 0px 0px;
   padding: 5px;
   width: 100%;
   height: auto;
@@ -585,7 +588,7 @@ h1 span {
   padding: 10px;
   cursor: pointer;
   user-select: none;
-  width: 25%;
+  width: 26%;
   transition: left 0.5s;
   text-align: center;
 }
@@ -666,11 +669,11 @@ h1 span {
 }
 #form_contrato #btn_salvar {
   float: right;
+  margin-right: 0px;
   margin-top: 40px;
   background: #154fa5;
   color: #fff;
   border: 0px;
-  border-radius: 5px;
   padding: 15px 30px;
   cursor: pointer;
 }

@@ -228,9 +228,14 @@ h1 {
     }
 
     #div_curso_combo {
+
       margin-top: 10px;
+      margin-right:5px;
+      margin-left:5px;
+
       background: #dddde3;
       padding: 10px;
+      padding-bottom: 15px;
       overflow: hidden;
       position: relative !important;
 
@@ -244,7 +249,7 @@ h1 {
           background: #fff;
           border: 1px solid #ccc;
           border-radius: 3px;
-          margin: 10px 0px 10px 0px;
+          margin: 10px 0px 0px 0px;
           padding: 5px;
           width: 100%;
           height: auto;
@@ -254,7 +259,7 @@ h1 {
 
       #label_check_combo {
         display: block;
-z-index: 9;
+        z-index: 9;
         top: 20px;
         left: 37.5%;
         position: absolute;
@@ -263,14 +268,13 @@ z-index: 9;
         padding: 10px;
         cursor: pointer;
         user-select: none;
-        width: 25%;
+        width: 26%;
         transition: left 0.5s;
         text-align: center;
 
         &:active {
           background: darken($secondary-color, 10%);
         }
-    
 
         input {
           float: right;
@@ -281,7 +285,7 @@ z-index: 9;
         background: #ed1860 !important;
       }
       .check_combo_checked {
-       &::after {
+        &::after {
           content: "\2713";
         }
       }
@@ -297,7 +301,7 @@ z-index: 9;
       #div_combo_curso_2 {
         width: 35%;
         float: right;
-        opacity:0;
+        opacity: 0;
         transition: opacity 1s;
 
         input,
@@ -363,12 +367,11 @@ z-index: 9;
 
   #btn_salvar {
     float: right;
-
+margin-right:0px;
     margin-top: 40px;
     background: $primary-color;
     color: #fff;
     border: 0px;
-    border-radius: 5px;
     padding: 15px 30px;
     cursor: pointer;
     &:hover {
