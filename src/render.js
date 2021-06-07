@@ -10,6 +10,8 @@ btnRespAluno.addEventListener("input", checkboxRespAluno);
 const btnCombo = document.querySelector("#label_check_combo");
 btnCombo.addEventListener("input", inputComboCheckbox);
 
+let check_combo = document.querySelector("#check_combo");
+
 //Curso Inputs
 const cursoSelect = document.querySelector("#curso_nome");
 cursoSelect.addEventListener("change", insertCursoInfo);
@@ -52,10 +54,18 @@ vencimento.value = dia;
 //Geras as mascaras dos campos usando o vanilla-masker
 VMasker(document.querySelector("#curso_valor")).maskMoney();
 VMasker(document.querySelector("#curso_desconto")).maskMoney();
-
+VMasker(document.querySelector("#resp_cep")).maskPattern("99999-999");
 VMasker(document.querySelector("#resp_cpf")).maskPattern("999.999.999-99");
 VMasker(document.querySelector("#resp_rg")).maskPattern("99.999.999-S");
 VMasker(document.querySelector("#aluno_rg")).maskPattern("99.999.999-S");
+VMasker(document.querySelector("#aluno_cep")).maskPattern("99999-999");
+
+
+
+function replaceEspacos(info) {
+  let res = info.replace(/(?<!,)\s/g, '&nbsp;').replace(/-/g, "&#8209;");
+  return res;
+}
 
 function insertTotal() {
   let v = valor.value.replace(",", "").replace(".", "");
@@ -72,34 +82,47 @@ function insertTotal() {
 
 //Insere as informações dos cursos nos inputs baseado em qual curso for selecionado.
 function inputComboCheckbox(e) {
+
+
   if (!e.target.checked) {
+    check_combo.value = false;
     e.target.parentElement.classList.remove("check_combo_checked");
     comboTextarea(e);
   } else {
+check_combo.value = true;
+
     e.target.parentElement.classList.add("check_combo_checked");
     comboTextarea(e);
   }
+      
 }
 
 function comboTextarea(e) {
   let divComboTextArea = document.querySelector("#div_combo_textarea");
   if (e.target.checked) {
-    btnCombo.style.left = "10px";
     combo_textarea.classList.remove("display_off");
     combo_curso_2.parentElement.style.opacity = '1'
     combo_curso_1.parentElement.style.opacity = '1'
-
+    combo_curso_1.style.color = '#444';
+    combo_curso_2.style.color = '#444';
     combo_curso_2.style['pointer-events'] = 'auto'
 
 
     insertComboTextarea();
   } else {
-    btnCombo.style.left = "37.5%";
 
     combo_textarea.classList.add("display_off");
-    combo_curso_1.parentElement.style.opacity = '0.0';
-    combo_curso_2.parentElement.style.opacity = '0.0';
+    combo_curso_1.parentElement.style.opacity = '0.5';
+    combo_curso_2.parentElement.style.opacity = '0.5';
+    
+
+    combo_curso_1.style.color = '#f0f0f0';
+    combo_curso_2.style.color = '#fff';
     combo_curso_2.style['pointer-events'] = 'none';
+
+
+
+
 
 
   }
@@ -107,13 +130,11 @@ function comboTextarea(e) {
 
 function insertComboTextarea() {
   combo_textarea.innerHTML = 
-    '<p>'+
-    'O RESPONSÁVEL recebera desconto de R$ <span class="red">'+ desconto.value +'</span>'+
-    ' referente ao <b>COMBO de CURSO</b><b>('+combo_curso_1.value+'</b> e <b>'+combo_curso_2.value+'</b>)em cada parcela, onde o valor' +
-    'passará a ser R$ <span class="green"><b>'+total.value +'</b></span> pelo periodo estipulado, refente ao COMBO dos cursos "Informática" ' +
-    'e "Inglês Completo", *Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos ' +
-    "(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos)."+
-    '</p>'
+    'O RESPONSÁVEL receberá desconto de R$ <span class="red">'+ desconto.value +'</span> em cada parcela'+
+    ' referente ao pacote de cursos<b> ('+combo_curso_1.value+'</b> + <b>'+combo_curso_2.value+'</b>), ' +
+    'passando o valor das parcelas a R$ <span class="green"><b>'+total.value +'</b></span>, ' +
+        '*Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos. <br/>' +
+    "(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos)."
     ;
 }
 
@@ -205,6 +226,14 @@ function insertCursoInfo(e) {
           duracao: "6",
           parcelas: "6",
         };
+              case "DWB":
+        cursoInfo = {
+          nome: e.target.value,
+          modulos: "HTML, CSS,Lógica de Programação, Manipulação com JS, Ajustes de Imagem Photoshop, ",
+          valor: "120,00",
+          duracao: "12",
+          parcelas: "12",
+        };
         break;
       case "BDB":
         cursoInfo = {
@@ -274,24 +303,24 @@ function sendForm(e) {
     resp_nome: e.target.resp_nome.value,
     resp_end: e.target.resp_end.value,
     resp_numero: e.target.resp_numero.value,
-    resp_bairro: e.target.resp_bairro.value,
-    resp_cep: e.target.resp_cep.value,
-    resp_cpf: e.target.resp_cpf.value,
-    resp_rg: e.target.resp_rg.value,
-    resp_cel: e.target.resp_cel.value,
-    resp_tel: e.target.resp_tel.value,
+    resp_bairro: replaceEspacos(e.target.resp_bairro.value),
+    resp_cep: replaceEspacos(e.target.resp_cep.value),
+    resp_cpf: replaceEspacos(e.target.resp_cpf.value),
+    resp_rg: replaceEspacos(e.target.resp_rg.value),
+    resp_cel: replaceEspacos(e.target.resp_cel.value),
+    resp_tel: replaceEspacos(e.target.resp_tel.value),
 
     aluno_nome: e.target.aluno_nome.value,
     aluno_end: e.target.aluno_end.value,
     aluno_numero: e.target.aluno_numero.value,
     aluno_parentesco: e.target.aluno_parentesco.value,
-    aluno_bairro: e.target.aluno_bairro.value,
-    aluno_cep: e.target.aluno_cep.value,
-    aluno_rg: e.target.aluno_rg.value,
-    aluno_cel: e.target.aluno_cel.value,
-    aluno_tel: e.target.aluno_tel.value,
+    aluno_bairro: replaceEspacos(e.target.aluno_bairro.value),
+    aluno_cep: replaceEspacos(e.target.aluno_cep.value),
+    aluno_rg: replaceEspacos(e.target.aluno_rg.value),
+    aluno_cel: replaceEspacos(e.target.aluno_cel.value),
+    aluno_tel: replaceEspacos(e.target.aluno_tel.value),
 
-    curso_nome: e.target.curso_nome.value,
+    curso_nome: replaceEspacos(e.target.curso_nome.value),
     curso_modulos: e.target.curso_modulos.value,
     curso_valor: e.target.curso_valor.value,
     curso_parcelas: e.target.curso_parcelas.value,
@@ -301,6 +330,9 @@ function sendForm(e) {
     curso_conclusao: f_conclusao,
 
     curso_data_contrato: e.target.curso_data_contrato.value,
+    
+    curso_check_combo: check_combo.value,
+    curso_combo: combo_textarea.innerHTML,
     curso_obs: e.target.curso_obs.value,
   };
   if (e.target.checkbox_resp_aluno.checked) {

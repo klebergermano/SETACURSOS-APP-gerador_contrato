@@ -319,6 +319,7 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
 <div class="folha" id="folha_4">
   <p>
     Cláusula 22ª.  CONTRATADA e CONTRATANTE possuem ainda em comum acordo os seguintes detalhes firmados: 
+    <em>${ data.curso_check_combo ==='true' ? data.curso_combo + "<br/>": "" }</em>
     <em>${data.curso_obs}</em>
   </p>
   <h2>DO FORO</h2><br/>
