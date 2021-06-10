@@ -1,9 +1,7 @@
 const { app, BrowserWindow, Menu, ipcMain, globalShortcut, Tray, dialog,} = require("electron");
-
 const pdf = require("html-pdf");
 const fs = require("fs");
 const path = require("path");
-
 const TemplateContrato = require("./TemplateContrato");
 
 const downloadPath = app.getPath("downloads");
@@ -38,7 +36,6 @@ const createWindow = () => {
   mainWindow.maximize()
 
   })
-  //Maximiza a tela
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

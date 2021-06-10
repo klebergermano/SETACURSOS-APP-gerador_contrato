@@ -4,8 +4,6 @@
   "version": "1.0.0",
   "description": "Gerador de Contratos SETA CURSOS-ME",
   "main": "src/index.js",
-
-
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",

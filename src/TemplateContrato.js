@@ -1,3 +1,9 @@
+
+function replaceToNonBreakSpaceHifen(info) {
+  let res = info.replace(/(?<!,)\s/g, "&nbsp;").replace(/-/g, "&#8209;");
+  return res;
+}
+
 function converteData(data) {
   let data_arr = data.split("-");
   let ano = data_arr[0];
