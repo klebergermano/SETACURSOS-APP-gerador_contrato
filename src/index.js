@@ -1,12 +1,4 @@
-const {
-  app,
-  BrowserWindow,
-  Menu,
-  ipcMain,
-  globalShortcut,
-  Tray,
-  dialog,
-} = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, globalShortcut, Tray, dialog,} = require("electron");
 
 const pdf = require("html-pdf");
 const fs = require("fs");

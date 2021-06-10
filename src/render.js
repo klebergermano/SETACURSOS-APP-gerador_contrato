@@ -1,25 +1,17 @@
-const { ipcRenderer, remote, NodeEventEmitter } = require("electron");
+const { ipcRenderer} = require("electron");
 const VMasker = require("vanilla-masker");
 const InsertInputDateValue = require('./modules/InsertInputDateValue');
 const InsertInputValorTotal = require('./modules/InsertInputValorTotal');
+const InsertCursoInfo = require('./modules/InsertCursoInfo');
+const InputComboCheckbox= require('./modules/InputComboCheckbox');
+const InsertComboTextarea = require("./modules/InsertComboTextarea");
 
 //variáveis
 const form = document.querySelector("#form_contrato");
 const checkCombo = document.querySelector("#check_combo");
-
-//TODO alterar nome 'select'
-const select = document.getElementById("curso_nome");
-
-const comboCurso1 = document.querySelector("#combo_curso_1");
-const comboCurso2 = document.querySelector("#combo_curso_2");
-
 const valor = document.querySelector("#curso_valor");
 const desconto = document.querySelector("#curso_desconto");
-const total = document.querySelector("#curso_total");
 const combo_textarea = document.querySelector("#combo_textarea");
-const modulos = document.querySelector("#curso_modulos");
-const duracao = document.querySelector("#curso_duracao");
-const parcelas = document.querySelector("#curso_parcelas");
 const vencimento = document.querySelector("#curso_vencimento");
 const fieldset_aluno = document.querySelector("#fieldset_aluno");
 const loadinContrato = document.querySelector("#loading_contrato");
@@ -33,16 +25,18 @@ document.querySelector("#label_checkbox_resp_aluno")
 
 //Button Checkbox Combo
 document.querySelector("#label_check_combo")
-.addEventListener("input", inputComboCheckbox);
+.addEventListener("input", InputComboCheckbox);
 
-//Curso Nome
+//Listener no nome do curso
 document.querySelector("#curso_nome")
-.addEventListener("change", insertCursoInfo);
+.addEventListener("change", InsertCursoInfo);
 
-comboCurso2.addEventListener("input", insertComboTextarea);
+document.querySelector("#combo_curso_2")
+.addEventListener("input", InsertComboTextarea);
+
 valor.addEventListener("input", InsertInputValorTotal);
 desconto.addEventListener("input", InsertInputValorTotal);
-desconto.addEventListener("change", insertComboTextarea);
+desconto.addEventListener("change", InsertComboTextarea);
 
 //Mascaras
 VMasker(valor).maskMoney();
@@ -55,7 +49,7 @@ VMasker(document.querySelector("#aluno_cep")).maskPattern("99999-999");
 
 
 //Insere a data corrente do dia como possível data do contrato.
-InsertInputDateValue("01-24-1988", "#curso_data_contrato");
+InsertInputDateValue(new Date(), "#curso_data_contrato");
 //Insere a data corrente do dia como possível inicio do curso.
 InsertInputDateValue(new Date(), "#curso_inicio");
 //Insere a dia atual como como possível dia de vencimento do curso.
@@ -64,189 +58,6 @@ vencimento.value = String(new Date().getDate()).padStart(2, "0");
 function replaceToNonBreakSpaceHifen(info) {
   let res = info.replace(/(?<!,)\s/g, "&nbsp;").replace(/-/g, "&#8209;");
   return res;
-}
-
-//Insere as informações dos cursos nos inputs baseado em qual curso for selecionado.
-function inputComboCheckbox(e) {
-  if (!e.target.checked) {
-    checkCombo.value = false;
-    e.target.parentElement.classList.remove("check_combo_checked");
-  } else {
-    checkCombo.value = true;
-    e.target.parentElement.classList.add("check_combo_checked");
-  }
-  comboTextarea(e);
-}
-
-function comboTextarea(e) {
-  if (e.target.checked) {
-    combo_textarea.classList.remove("display_off");
-    comboCurso2.parentElement.style.opacity = "1";
-    comboCurso1.parentElement.style.opacity = "1";
-    comboCurso1.style.color = "#444";
-    comboCurso2.style.color = "#444";
-    comboCurso2.style["pointer-events"] = "auto";
-    insertComboTextarea();
-  } else {
-    combo_textarea.classList.add("display_off");
-    comboCurso1.parentElement.style.opacity = "0.5";
-    comboCurso2.parentElement.style.opacity = "0.5";
-    comboCurso1.style.color = "#f0f0f0";
-    comboCurso2.style.color = "#fff";
-    comboCurso2.style["pointer-events"] = "none";
-  }
-}
-
-function insertComboTextarea() {
-  combo_textarea.innerHTML =
-    'O RESPONSÁVEL receberá desconto de R$ <span class="red">' +
-    desconto.value +
-    "</span> em cada parcela" +
-    " referente ao pacote de cursos<b> (" +
-    comboCurso1.value +
-    "</b> + <b>" +
-    comboCurso2.value +
-    "</b>), " +
-    'passando o valor das parcelas a R$ <span class="green"><b>' +
-    total.value +
-    "</b></span>, " +
-    "*Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos. <br/>" +
-    "(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos).";
-}
-
-function insertCursoInfo(e) {
-  var curso = select.options[select.selectedIndex].getAttribute("name");
-  const setCursoInfo = new Promise((resolve, reject) => {
-    switch (curso) {
-      case "IFB":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos:
-            "Introdução a Informática, Dispositivos Eletrônicos, Pacote Office Básico, Windows Básico, Digitação, Introdução ao Hardware, Redes Básico, Internet.",
-          valor: "90,00",
-          duracao: "6",
-          parcelas: "6",
-        };
-        break;
-      case "IFC":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos:
-            "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Atualização e Formatação, Windows, Digitação, Hardware, Redes, Internet, Backup e Segurança, Gerenciamento de Dados.",
-          valor: "90,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-        break;
-      case "IGB":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos:
-            "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
-          valor: "120,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-        break;
-      case "IGM":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Vocabulário, Pronunciação, Gramática.",
-          valor: "120,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-      case "IGK1":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Intermediário, Pré Avançado.",
-          valor: "120,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-
-      case "IGK2":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Intermediário, Pré Avançado.",
-          valor: "120,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-
-      case "IGK3":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Intermediário, Pré Avançado.",
-          valor: "120,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-        break;
-      case "IGA":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Avançado.",
-          valor: "120,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-        break;
-      case "EXA":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Avançado.",
-          valor: "140,00",
-          duracao: "6",
-          parcelas: "6",
-        };
-      case "DWB":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos:
-            "HTML, CSS,Lógica de Programação, Manipulação com JS, Ajustes de Imagem Photoshop, ",
-          valor: "120,00",
-          duracao: "12",
-          parcelas: "12",
-        };
-        break;
-      case "BDB":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Avançado",
-          valor: "140,00",
-          duracao: "6",
-          parcelas: "6",
-        };
-        break;
-      case "RFE":
-        cursoInfo = {
-          nome: e.target.value,
-          modulos: "Avançado",
-          valor: "100,00",
-          duracao: "3",
-          parcelas: "3",
-        };
-        break;
-    }
-
-    resolve(cursoInfo);
-  });
-
-  setCursoInfo
-    .then((res) => {
-      valor.value = res.valor;
-      duracao.value = res.duracao;
-      parcelas.value = res.parcelas;
-      modulos.value = res.modulos;
-      comboCurso1.value = res.nome;
-    })
-    .then(() => {
-      InsertInputValorTotal();
-    })
-    .then(() => {
-      insertComboTextarea();
-    });
 }
 
 //Remove e reinsere o aluno usando css transition em ".aluno_off"
@@ -260,6 +71,7 @@ function checkboxRespAluno(e) {
 }
 
 //Envia o objeto com as informações do formulário para a main stream index.js
+
 function sendForm(e) {
   e.preventDefault();
   let conclusao = new Date(e.target.curso_inicio.value);
@@ -270,6 +82,7 @@ function sendForm(e) {
   let mes = String(conclusao.getMonth() + 1).padStart(2, "0");
   let ano = String(conclusao.getFullYear()).padStart(2, "0");
   let f_conclusao = ano + "-" + mes + "-" + dia;
+  
   let data = {
     resp_nome: e.target.resp_nome.value,
     resp_end: e.target.resp_end.value,
