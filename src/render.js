@@ -8,13 +8,26 @@ const InsertComboTextarea = require("./modules/InsertComboTextarea");
 
 //variáveis
 const form = document.querySelector("#form_contrato");
-const checkCombo = document.querySelector("#check_combo");
 const valor = document.querySelector("#curso_valor");
 const desconto = document.querySelector("#curso_desconto");
 const comboTextarea = document.querySelector("#combo_textarea");
 const vencimento = document.querySelector("#curso_vencimento");
 const fieldset_aluno = document.querySelector("#fieldset_aluno");
 const loadinContrato = document.querySelector("#loading_contrato");
+const cursosSelect1 = document.querySelector("#curso_nome");
+const cursosSelect2 = document.querySelector("#combo_curso_2");
+
+
+
+
+(function setCurso(){
+ 
+  cursos = cursosSelect1.innerHTML;
+ cursosSelect2.innerHTML = cursos;
+
+})();
+
+
 
 //Listeners
 form.addEventListener("submit", sendForm);
@@ -88,14 +101,14 @@ formValues.curso_conclusao =  f_conclusao;
 
   if (e.target.checkbox_resp_aluno.checked) {
     formValues.aluno_nome = "IDEM";
-    data.aluno_end = "--//--";
-    data.aluno_numero = "--//--";
-    data.aluno_parentesco = "--//--";
-    data.aluno_bairro = "--//--";
-    data.aluno_cep = "--//--";
-    data.aluno_rg = "--//--";
-    data.aluno_cel = "--//--";
-    data.aluno_tel = "--//--";
+    formData.aluno_end = "--//--";
+    formData.aluno_numero = "--//--";
+    formData.aluno_parentesco = "--//--";
+    formData.aluno_bairro = "--//--";
+    formData.aluno_cep = "--//--";
+    formData.aluno_rg = "--//--";
+    formData.aluno_cel = "--//--";
+    formData.aluno_tel = "--//--";
   }
 console.log("formValues:", formValues);
   result = new Promise((resolve, reject) => {

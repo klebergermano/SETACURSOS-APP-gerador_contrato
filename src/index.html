@@ -77,8 +77,11 @@
         <label>Curso:</label> 
         <select id='curso_nome'>
           <option selected="true" disabled="disabled"></option>
-          <option class='informatica' name='IFB' value='Informática Básico'>Informática Básico</option>
+          <option class='informatica' name='IFP' value='Informática Básico'>Informática Prática</option>
+          <option class='informatica' name='IFPRO' value='Informática Completo'>Informática Profissional</option>
           <option class='informatica' name='IFC' value='Informática Completo'>Informática Completo</option>
+          <option class='informatica' name='IFK' value='Informática Completo'>Informática KIDS</option>
+          
           <option class='ingles' name='IGB' value='Inglês Básico'>Inglês Básico</option>
           <option class='ingles' name='IGM' value='Inglês Intermediário'>Inglês Intermediário</option>
           <option class='ingles' name='IGA' value='Inglês Avançado'>Inglês Avançado</option>
@@ -156,18 +159,8 @@
 
           <div id='div_combo_curso_2'>
             <label  >Curso 2:</label>
-            <select id='combo_curso_2' >
-              <option selected="true" disabled="disabled"></option>
-              <option name='IFB' value='Informática Básico'>Informática Básico</option>
-              <option name='IFC' value='Informática Completo'>Informática Completo</option>
-              <option name='IGB' value='Inglês Básico'>Inglês Básico</option>
-              <option name='IGM' value='Inglês Intermediário'>Inglês Intermediário</option>
-              <option name='IGA' value='Inglês Avançado'>Inglês Avançado</option>
-              <option name='IGK1' value='Inglês KIDS-1'>Inglês KIDS-1</option>
-              <option name='IGK2' value='Inglês KIDS-2'>Inglês KIDS-2</option>
-              <option name='IGK3' value='Inglês KIDS-3'>Inglês KIDS-3</option>
-              <option name='EXA' value='Excel Avançado'>Excel Avançado</option>
-              <option name='BDB' value='Banco de Dados Básico(MySQL)'>Banco de Dados Básico (MySQL)</option>
+            <select id='combo_curso_2' name='teste'>
+           <!--Recebe os valores de curso_nome via função em render-->
             </select>
           </div><!--div_combo_curso_2-->
           <div id='div_combo_curso_1'>

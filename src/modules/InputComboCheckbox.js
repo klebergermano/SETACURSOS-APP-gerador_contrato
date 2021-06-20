@@ -3,6 +3,7 @@ const InsertComboTextarea = require("./InsertComboTextarea");
 const comboCurso1 = document.querySelector("#combo_curso_1");
 const comboCurso2 = document.querySelector("#combo_curso_2");
 const combo_textarea = document.querySelector("#combo_textarea");
+const checkCombo = document.querySelector("#check_combo");
 
 function InputComboCheckbox(e) {
     if (!e.target.checked) {
