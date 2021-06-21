@@ -507,27 +507,6 @@ h1 span {
 #form_contrato #fieldset_curso .row .div_input input {
   width: 75px;
 }
-#form_contrato #fieldset_curso .row .div_input select {
-  width: 100%;
-}
-#form_contrato #fieldset_curso .row .div_input select .informatica {
-  color: #154fa5;
-}
-#form_contrato #fieldset_curso .row .div_input select .web {
-  color: #1111ff;
-}
-#form_contrato #fieldset_curso .row .div_input select .ingles {
-  color: #cf0675;
-}
-#form_contrato #fieldset_curso .row .div_input select .excel {
-  color: green;
-}
-#form_contrato #fieldset_curso .row .div_input select .bd {
-  color: #ad593a;
-}
-#form_contrato #fieldset_curso .row .div_input select .re {
-  color: #702e70;
-}
 #form_contrato #fieldset_curso .row .div_input textarea {
   width: 100%;
 }
@@ -740,6 +719,32 @@ h1 span {
 
 .green {
   color: green !important;
+}
+
+select {
+  width: 100%;
+}
+select .informatica {
+  color: #154fa5;
+}
+select .web {
+  color: #1111ff;
+}
+select .ingles {
+  color: #cf0675;
+}
+select .excel {
+  color: green;
+}
+select .bd {
+  color: #ad593a;
+}
+select .re {
+  color: #702e70;
+}
+
+option[disabled] {
+  color: #ccc !important;
 }
 
 /*# sourceMappingURL=style.css.map */
