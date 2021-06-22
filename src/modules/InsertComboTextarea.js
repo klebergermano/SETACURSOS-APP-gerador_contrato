@@ -17,8 +17,8 @@ function InsertComboTextarea() {
       'passando o valor das parcelas a R$ <span class="green"><b>' +
       total.value +
       "</b></span>, " +
-      "*Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos. <br/>" +
-      "(O valor das parcelas voltará a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos).";
+      "(Desconto válido somente enquanto o ALUNO(a) frequentar os 2 Cursos, voltando o valor " +
+      "a sua totalidade caso o ALUNO(a) conclua ou desista de um dos cursos).";
   }
 
 module.exports = InsertComboTextarea;
