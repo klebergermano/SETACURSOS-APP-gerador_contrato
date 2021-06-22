@@ -10,12 +10,10 @@ const InsertComboTextarea = require("./InsertComboTextarea");
 function selectCursoInfo(nomeCurso) {
   let cursos = {
     IFP: {
-      nome: "Informática Pratica",
+      nome: "Informática Prática",
       modulos:
-        "Introdução a Informática, Dispositivos, Pacote Office," +
-        "Instalação de Programas, Atualização e Formatação, Windows, " +
-        "Digitação, Hardware, Redes, Internet, " +
-        "Backup e Segurança, Gerenciamento de Dados.",
+      "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Atualização e Formatação, "+ 
+       "Windows, Digitação, Hardware, Redes, Internet, Backup e Segurança, Gerenciamento de Dados.",
       valor: "90,00",
       duracao: "12",
       parcelas: "12",
@@ -24,10 +22,8 @@ function selectCursoInfo(nomeCurso) {
     IFPRO: {
       nome: "Informática Profissional",
       modulos:
-        "Introdução a Informática, Dispositivos, Pacote Office, " +
-        "Instalação de Programas, Atualização e Formatação, Windows," +
-        "Digitação, Hardware, Redes, Internet, Backup e Segurança, " +
-        "Gerenciamento de Dados, Inglês Instrumental, Introdução ao Banco de Dados.",
+      "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Atualização e Formatação, Windows, "+ 
+      "Digitação, Hardware, Redes, Internet, Backup e Segurança, Gerenciamento de Dados, Inglês Instrumental, Introdução a Banco de Dados.",
       valor: "90,00",
       duracao: "12",
       parcelas: "12",
@@ -36,11 +32,8 @@ function selectCursoInfo(nomeCurso) {
     IFC: {
       nome: "Informática Completo",
       modulos:
-        "Introdução a Informática, Dispositivos, Pacote Office," +
-        "Atualização e Formatação, Instalação de Programas," +
-        "Windows, Redes, Digitação, Hardware, Internet, Backup e Segurança," +
-        "Gerenciamento de Dados, Inglês Instrumental." +
-        "#Lógica de Programação, HTML, CSS, JS, Photoshop.",
+        "Introdução a Informática, Dispositivos, Pacote Office, Atualização e Formatação, Instalação de Programas, Windows, Redes, Digitação, "+ 
+        "Hardware, Internet, Backup e Segurança, Gerenciamento de Dados, Inglês Instrumental, Lógica de Programação e Introdução a: HTML, CSS, JS, Photoshop.",
       valor: "90,00",
       duracao: "12",
       parcelas: "12",
@@ -48,86 +41,84 @@ function selectCursoInfo(nomeCurso) {
     IFK: {
       nome: "Informática Completo",
       modulos:
-        "Introdução a Informática, Dispositivos, " +
-        "Pacote Office, Instalação de Programas, Windows, " +
-        "Digitação, Hardware, Internet, Programação KIDS.",
+        "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Windows, Digitação, Hardware, Internet, Programação KIDS.",
       valor: "90,00",
-      duracao: "6",
-      parcelas: "6",
+      duracao: "12",
+      parcelas: "12",
+    },
+    IGB: {
+      nome: "Inglês Básico",
+      modulos:
+        "Básico 1 (o aluno terá o primeiro contato com o idioma, abecedário, numerais, vocabulário baseado no seu dia a dia e aprenderá a usar frases simples). "+ 
+        "Básico 2 (o aluno será capaz de usar frases e pequenos diálogos, compreendendo mais sobre a gramática e a como trabalhar com tempos verbais simples).",
+      valor: "120,00",
+      duracao: "12",
+      parcelas: "12",
     },
 
-    IGM: {
-      nome: "",
+    IGI: {
+      nome: "Inglês Intermediário",
       modulos:
-        "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
+        "Intermediário 1 (o aluno começará a se expressar com mais independência, compreendera textos mais comuns além de ser introduzido a outros tempos verbais). "+
+        "Intermediário 2 (o aluno conseguirá trabalhar com todos os tempos verbais, e a se expressar sobre assuntos variados).",
       valor: "120,00",
       duracao: "12",
       parcelas: "12",
     },
     IGA: {
-      nome: "",
+      nome: "Inglês Avançado",
       modulos:
-        "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
+        "Avançado 1 (o aluno conseguira se expressar de forma mais natural sem depender do interlocutor, compreender textos e diálogos sobre diversos assuntos, e uma boa compreensão da gramática inglesa). "+
+        "Avançado 2 (o aluno será capaz de falar de forma mais fluente, e conhecerá mais sobre a cultura inglesa, expressões idiomáticas, phrasal verbs, além de identificar diferentes sotaques e peculiaridades do idioma).",
+        valor: "120,00",
+      duracao: "12",
+      parcelas: "12",
+    },
+
+    IGK: {
+      nome: "Inglês KIDS",
+      modulos:
+          "KIDS (a criança aprenderá de forma divertida, espontânea e prática, tendo o contato com a língua inglesa através de atividades, jogos, quadrinhos e dinâmicas onde ela começará a formar seu vocabulário, "+ 
+          "tendo como base o alfabeto, cores, numerais, itens do dia-a-dia além das expressões bases do idioma). ",
       valor: "120,00",
       duracao: "12",
       parcelas: "12",
     },
 
-    IGK1: {
-      nome: "",
+    IGPT: {
+      nome: "Inglês Pre-teen",
       modulos:
-        "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
+        "Pre-teen (o aluno será preparado para as próximas etapas do Inglês, onde terá seu vocabulário expandido, trabalhando as bases do idioma de forma dinâmica e interativa). ",
       valor: "120,00",
       duracao: "12",
       parcelas: "12",
     },
 
-    IGK2: {
-      nome: "",
-      modulos:
-        "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
-      valor: "120,00",
-      duracao: "12",
-      parcelas: "12",
-    },
-
-    IGK3: {
-      nome: "",
-      modulos:
-        "Básico, Pré Intermediário, Gramática, Vocabulário, Pronunciação 1.",
-      valor: "120,00",
-      duracao: "12",
-      parcelas: "12",
-    },
 
     EXA: {
-      nome: "",
+      nome: "Excel Avançado",
       modulos:
-        "Atalhos, Funções de Lógica C, Indice mais Corresp, Tabela Dinâmica, Formatação Condicional, " +
-        "Gráfico Dinâmico, Validação de Dados, Macro, Solver, Ahead, Atingir Meta, Vínculos," +
-        "Imprimir Documentos, Importação de Banco de Dados, Importação e Exportação de Dados," +
-        "Segurança de Planilhas, Dashboard, Auditoria, Hiperlink," +
-        "Funções Aninhadas, Funções de Texto, Funções de Data e Hora, Funções de Pesquisa," +
-        "Funções Financeiras ",
-      valor: "120,00",
-      duracao: "12",
-      parcelas: "12",
+        "Atalhos, Tabelas Dinâmicas, Gráficos Dinâmicos, Formatação Condicional, Validação de Dados, Macros, Segurança de Planilhas e Pastas de Trabalho, Hiperlinks, Dashboards, "+
+        "Importação e Exportação de Dados do Excel e Banco de Dados, Vínculos, Solver, Atingir Meta, Funções Aninhadas. Funções de Lógica de Texto, Funções de Data e Hora, Funções Matemáticas, "+
+        "Funções de Pesquisa, PROCC e PROCV.",
+      valor: "140,00",
+      duracao: "6",
+      parcelas: "6",
     },
 
-    BDB: {
-      nome: "",
+    BDBMySQL: {
+      nome: "Banco de Dados Básico MySQL",
       modulos:
-        "Introdução a Banco de Dados, Banco de Dados Relacional, " +
-        "DDL, DCL, DEL DQL, FN1, FN2, FN3, Pesquisa Avançada.",
-      valor: "120,00",
-      duracao: "12",
-      parcelas: "12",
+        "Introdução a Banco de Dados, Banco de Dados Relacional, Introdução ao SQL, DDL, DML, DQL, DCL, Normalização de Dados, Introdução ao Workbench, Diagrama EER.",
+      valor: "140,00",
+      duracao: "6",
+      parcelas: "6",
     },
 
     DWB: {
-      nome: "",
+      nome: "Desenvolvimento WEB",
       modulos:
-        "Lógica de Programação, HTML, CSS, Manipulação com JS, Photoshop, Wireframe.",
+        "Lógica de Programação, Wireframes, HTML, CSS, Javascript, Photoshop.",
       valor: "120,00",
       duracao: "12",
       parcelas: "12",

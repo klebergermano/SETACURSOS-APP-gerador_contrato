@@ -267,7 +267,9 @@ parcelas de <em>R$ ${data.curso_valor},</em> a serem pagas até o dia:
   <div id='rescisao'>
     <h2>DA RESCISÃO</h2>
 <p>
-  Cláusula 13ª. O presente contrato poderá ser rescindido pelo CONTRATANTE, mediante pedido formal endereçado à CONTRATADA. 
+Cláusula 13ª. O presente contrato poderá ser rescindido pelo CONTRATANTE, mediante pedido formal endereçado à 
+CONTRATADA, podendo também ser rescindido pela CONTRATADA em caso de móvitos de força maior, incluindo, mas não se restringindo à mudança ou fechamento de unidade, inadequação do ALUNO, cancelamento de curso, ou quaisquer 
+outros motivos que a CONTRATADA julgue pertinentes, não devendo a CONTRADA sofrer quaisquer ônus ou ressarcimentos das parcelas até então efetuadas pelo CONTRATANTE.
 </p>
 <p>
   Cláusula 14ª. O pedido de rescisão, <b>antes do início das aulas</b> ou <b>após o início das aulas</b>, mediante pedido formal nos termos previstos 
@@ -306,11 +308,11 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
     </p>
     
     <p>
-      Cláusula 21ª.  O CONTRATANTE autoriza a CONTRATADA, desde já, em caráter irretratável e 
-      irrevogável, a utilizar e veicular sua imagem e a de seu FAMILIAR através de fotografias ou 
-      vídeos realizadas nas dependências da CONTRATADA para fins de publicidade interna ou externa 
-      em materiais impressos, redes sociais, websites e veículos de comunicação, sem qualquer ônus 
-      ou limite de número de inserções e reproduções para a CONTRATADA.
+    Cláusula 21ª.  O CONTRATANTE autoriza a CONTRATADA, desde já, em caráter irretratável e 
+    irrevogável, a utilizar e veicular sua imagem e a do ALUNO(a) através de fotografias ou 
+    vídeos realizadas nas dependências da CONTRATADA para fins de publicidade interna ou externa 
+    em materiais impressos, redes sociais, websites e veículos de comunicação, 
+    sem qualquer ônus ou limite de número de inserções e reproduções para a CONTRATADA.
     </p>
 
 
