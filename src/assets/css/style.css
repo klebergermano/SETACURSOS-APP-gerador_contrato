@@ -347,6 +347,15 @@ template {
   box-sizing: border-box;
 }
 
+.version {
+  position: absolute;
+  color: #999;
+  font-size: 14px;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #111119;
