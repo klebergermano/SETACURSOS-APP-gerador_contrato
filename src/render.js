@@ -81,7 +81,7 @@ function checkboxRespAluno(e) {
     fieldset_aluno.classList.remove("aluno_off");
     //Remove o valor "IDEM" no nome do aluno
     SetAttribute("#aluno_nome", 'style', "color:#333");
-    SetAttribute("#aluno_nome", 'value', "")
+    SetAttribute("#aluno_nome", 'value', "");
 
 
   }
