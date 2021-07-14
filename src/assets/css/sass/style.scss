@@ -181,7 +181,7 @@ h1 {
       }
       #div_curso_modulos {
         textarea {
-          min-height: 55px;
+          min-height: 70px;
           color: #445;
           font-size: 13px;
         }
@@ -450,4 +450,10 @@ select {
 
 option[disabled]{
   color:#ccc !important;
+}
+
+.required{
+  color:red;
+  margin-left:-10px;
+  margin-right:5px;
 }

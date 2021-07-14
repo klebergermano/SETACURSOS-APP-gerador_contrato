@@ -511,7 +511,7 @@ h1 span {
   width: 100%;
 }
 #form_contrato #fieldset_curso .row #div_curso_modulos textarea {
-  min-height: 55px;
+  min-height: 70px;
   color: #445;
   font-size: 13px;
 }
@@ -745,6 +745,12 @@ select .re {
 
 option[disabled] {
   color: #ccc !important;
+}
+
+.required {
+  color: red;
+  margin-left: -10px;
+  margin-right: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

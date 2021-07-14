@@ -72,8 +72,10 @@ function checkboxRespAluno(e) {
   e.target.parentElement.classList.toggle("active");
   if (e.target.parentElement.classList.contains("active")) {
     fieldset_aluno.classList.add("aluno_off");
+    document.querySelector('#aluno_nome').removeAttribute('required');
   } else {
     fieldset_aluno.classList.remove("aluno_off");
+    document.querySelector('#aluno_nome').setAttribute('required', true);
   }
 }
 
