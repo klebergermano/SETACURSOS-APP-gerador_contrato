@@ -106,7 +106,11 @@ function selectCursoInfo(nomeCurso) {
       parcelas: "6",
     },
 
+<<<<<<< HEAD
+    BDBMySQL: {
+=======
     BDBMYSQL: {
+>>>>>>> 2c9da93dfec579f3ef802f3fc01b34f2d5678fb5
       nome: "Banco de Dados Básico MySQL",
       modulos:
         "Introdução a Banco de Dados, Banco de Dados Relacional, Introdução ao SQL, DDL, DML, DQL, DCL, Normalização de Dados, Introdução ao Workbench, Diagrama EER.",
