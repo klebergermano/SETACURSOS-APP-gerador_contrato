@@ -1,5 +1,9 @@
 //Insere as informações dos cursos nos inputs baseado em qual curso for selecionado.
 const InsertComboTextarea = require("./InsertComboTextarea");
+const SetAttribute = require("./SetAttribute");
+const RemoveAttribute = require("./RemoveAttribute");
+
+
 const comboCurso1 = document.querySelector("#combo_curso_1");
 const comboCurso2 = document.querySelector("#combo_curso_2");
 const combo_textarea = document.querySelector("#combo_textarea");
@@ -24,6 +28,7 @@ function comboTextarea(e) {
       comboCurso1.style.color = "#444";
       comboCurso2.style.color = "#444";
       comboCurso2.style["pointer-events"] = "auto";
+      SetAttribute('#combo_curso_2', 'required', true);
       InsertComboTextarea();
     } else {
       combo_textarea.classList.add("display_off");
@@ -32,6 +37,9 @@ function comboTextarea(e) {
       comboCurso1.style.color = "#f0f0f0";
       comboCurso2.style.color = "#fff";
       comboCurso2.style["pointer-events"] = "none";
+      RemoveAttribute('#combo_curso_2', 'required');
+
+
     }
   }
   

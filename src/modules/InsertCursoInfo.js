@@ -39,7 +39,7 @@ function selectCursoInfo(nomeCurso) {
       parcelas: "12",
     },
     IFK: {
-      nome: "Informática Completo",
+      nome: "Informática KIDS",
       modulos:
         "Introdução a Informática, Dispositivos, Pacote Office, Instalação de Programas, Windows, Digitação, Hardware, Internet, Programação KIDS.",
       valor: "90,00",
@@ -106,7 +106,11 @@ function selectCursoInfo(nomeCurso) {
       parcelas: "6",
     },
 
+<<<<<<< HEAD
     BDBMySQL: {
+=======
+    BDBMYSQL: {
+>>>>>>> 2c9da93dfec579f3ef802f3fc01b34f2d5678fb5
       nome: "Banco de Dados Básico MySQL",
       modulos:
         "Introdução a Banco de Dados, Banco de Dados Relacional, Introdução ao SQL, DDL, DML, DQL, DCL, Normalização de Dados, Introdução ao Workbench, Diagrama EER.",

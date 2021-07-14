@@ -137,9 +137,16 @@ p{
 }
 
 #folha_4{
-  
   max-height:29.6cm !important;
   overflow:hidden !important;
+}
+#folha_5{
+  height:29.6cm;
+  p{
+    line-height:22px !important;
+    margin-botom:0px !important;
+    margin-top:0px !important;
+  }
 }
     </style>
   </head>
@@ -344,9 +351,9 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
       ${data_contrato_extenso}
     </p>
   </div>
-</br>
-</br>
-</br>
+  </br>
+  </br>
+  </br>
 
   <div id='assinaturas'>
     <div> 
@@ -360,6 +367,77 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
   <div>
   <span class='paginacao'> Página 4 de 4</span>
 </div><!--folha_4-->
+</div>
+</div>
+<!------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------->
+<div class="folha" id="folha_5">
+<hr/>
+
+  <h2>Resumo de Informações do Contrato</h2><br/>
+  <div id='resumo_contrato'>
+  <hr/>
+  <h3>Responsável</h3>
+  <p>
+   Nome:<em>${ data.resp_nome}</em>
+  </p>
+  <p> Endereço:<em>${ data.resp_end}, nº ${ data.resp_numero}</em>
+  </p>
+  <p> Bairro:<em>${ data.resp_bairro}</em>
+   CEP:<em>${ data.resp_cep}</em>
+  </p>
+  <p>
+   CPF.:<em>${ data.resp_cpf}</em>
+   RG.:<em>${ data.resp_rg}</em>
+  </p>
+  <p>
+     Tel.:<em>${ data.resp_tel}</em>
+     Cel.:<em>${ data.resp_cel}</em>
+  </p>
+  <hr/>
+  <h3>Aluno:</h3>
+
+    <p>
+    Nome:<em>${ data.aluno_nome}</em>
+    Parentesco:<em>${ data.aluno_parentesco}</em>
+    </p>
+    <p>Endereço:<em>${ data.aluno_end}, nº ${ data.aluno_numero}</em>
+    </p>
+    <p>Bairro:<em>${ data.aluno_bairro}</em>
+    CEP:<em>${ data.aluno_cep}</em>
+    </p>
+    <p>
+    RG.:<em>${ data.aluno_rg}</em>
+    </p>
+    <p>
+    Tel.:<em>${ data.aluno_tel}</em>
+    Cel.:<em>${ data.aluno_cel}</em>
+    </p>
+    <hr/>
+    <p>
+  <h3>Curso:</h3>
+
+    Nome: <em>${ data.curso_nome}</em>
+    Duração: <em>${ data.curso_duracao}</em>
+   Parcelas: <em>${ data.curso_parcelas}</em>
+    Valor : <em>${ data.curso_valor}</em>
+    Desconto: <em>${ data.curso_desconto}</em>
+    Valor Total: <em>${ data.curso_total}</em>
+    Início: <em>${ data.curso_inicio}</em>
+    Conclusão: <em>${ data.curso_conclusao}</em>
+    </p>
+      <p>
+      Data do Contrato: <em>${ data_contrato_extenso}</em>
+    </p>
+    
+    <p>
+    Obs.: <em>${ data.curso_check_combo ==='true' ? data.curso_combo + "<br/>": "" }</em>
+    <em>${data.curso_obs}</em>
+  </p>
+  
+  </div>
+</div><!--folha_5-->
+
   </body>
 </html>
 
