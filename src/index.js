@@ -38,7 +38,7 @@ const createWindow = () => {
   })
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+ // mainWindow.webContents.openDevTools();
 
   //Shortcuts
   globalShortcut.register("CommandOrControl+Q", () => {
@@ -146,3 +146,4 @@ ipcMain.handle("submit", async (event, data_info) => {
       return false;
     });
 });
+

@@ -113,7 +113,7 @@ h1{
     margin-bottom:20px;
 }
 
-em{font-weight: bold; color:#3333aa;}
+em{font-weight: bold; color:#333399;}
 p{
     line-height: 22px;
     margin-bottom:20px;
@@ -142,11 +142,11 @@ p{
 }
 #folha_5{
   height:29.6cm;
-  p{
-    line-height:22px !important;
-    margin-botom:0px !important;
-    margin-top:0px !important;
-  }
+}
+#folha_5 p {
+  line-height:22px !important;
+  margin-bottom:5px !important;
+  margin-top:0px !important;
 }
     </style>
   </head>
@@ -161,19 +161,19 @@ p{
 
 <p>
   <span class='text_compac_light'><b>CONTRATANTE:</b> <em>${data.resp_nome}</em>, 
-  portador do R.G.:&nbsp;<em>${data.resp_rg}</em>,
-  e CPF:&nbsp;<em>${data.resp_cpf}</em>,
+  portador do R.G.:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.resp_rg)}</em>,
+  e CPF:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.resp_cpf)}</em>,
   residente e domiciliado&nbsp;</span> em:&nbsp;<em>${data.resp_end}</em>, 
-  número:&nbsp;<em>${data.resp_numero}</em>, 
-  bairro:&nbsp;<em>${data.resp_bairro}</em>, 
-  CEP:&nbsp;<em>${data.resp_cep}</em>, na Cidade de São Paulo, no Estado de São Paulo; 
+  número:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.resp_numero)}</em>, 
+  bairro:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.resp_bairro)}</em>, 
+  CEP:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.resp_cep)}</em>, na Cidade de São Paulo, no Estado de São Paulo; 
   responsável pelo <b>ALUNO(a):</b>&nbsp;<em>${data.aluno_nome}</em>, 
   que possui vínculo parental de: <em>${data.aluno_parentesco}</em>, 
  portador do R.G.:&nbsp;<em>${data.aluno_rg}</em>, 
  residente e domiciliado em:&nbsp;<em>${data.aluno_end}</em>,
- número:&nbsp;<em>${data.aluno_numero}</em>, 
- bairro:&nbsp;<em>${data.aluno_bairro}</em>, 
- CEP:&nbsp;<em>${data.aluno_cep}</em>,
+ número:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.aluno_numero)}</em>, 
+ bairro:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.aluno_bairro)}</em>, 
+ CEP:&nbsp;<em>${replaceToNonBreakSpaceHifen(data.aluno_cep)}</em>,
 na Cidade de São Paulo, no Estado de São Paulo.
 </p>
 
@@ -191,7 +191,7 @@ na Cidade de São Paulo, no Estado de São Paulo.
         <h2>DO OBJETO DO CONTRATO</h2>
         <p>Cláusula 1ª. O presente contrato tem como OBJETO, a prestação, pela CONTRATADA, ao CONTRATANTE, 
           dos serviços de ensino de Informática ao ALUNO(a) pelo período de <em>12 meses </em>onde será ministrado o curso:
-          <em>${data.curso_nome}</em>, sendo este composto pelos módulos:<em> ${data.curso_modulos}</em> 
+          <em>${replaceToNonBreakSpaceHifen(data.curso_nome)}</em>, sendo este composto pelos módulos:<em> ${data.curso_modulos}</em> 
       </div><!--objecto_contrato-->
 
       <div id='das_aulas'>
@@ -251,9 +251,9 @@ na Cidade de São Paulo, no Estado de São Paulo.
           
 Cláusula 10ª. Pelos serviços prestados, o CONTRATANTE pagará à CONTRATADA a quantidade de 
 <em>${data.curso_parcelas}</em>
-parcelas de <em>R$ ${data.curso_valor},</em> a serem pagas até o dia: 
-<em>${data.curso_vencimento}</em> de cada mês, sendo estas parcelas
- referentes a cada mês de duração do curso <em>${data.curso_nome}</em>. 
+parcelas de <em>R$ ${replaceToNonBreakSpaceHifen(data.curso_valor)},</em> a serem pagas até o dia: 
+<em>${replaceToNonBreakSpaceHifen(data.curso_vencimento)}</em> de cada mês, sendo estas parcelas
+ referentes a cada mês de duração do curso <em>${replaceToNonBreakSpaceHifen(data.curso_nome)}</em>. 
         </p>
         <p>
           Cláusula 11ª. A ausência do ALUNO(a) às atividades presenciais, bem como a falta do cumprimento, pelo mesmo, das demais obrigações acadêmicas de sua responsabilidade, não exime a CONTRATANTE do pagamento das mensalidades que se vencerem durante esse período. 
@@ -305,7 +305,7 @@ outros motivos que a CONTRATADA julgue pertinentes, não devendo a CONTRADA sofr
   <h2>CONDIÇÕES GERAIS</h2>
     <p>
       Cláusula 19ª. Ao final deste contrato, o ALUNO(a) receberá um certificado de conclusão 
-do curso <em>${data.curso_nome}</em>.               
+do curso <em>${replaceToNonBreakSpaceHifen(data.curso_nome)}</em>.               
 
     </p>
     <p>
@@ -334,7 +334,7 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
 <div class="folha" id="folha_4">
   <p>
     Cláusula 22ª.  CONTRATADA e CONTRATANTE possuem ainda em comum acordo os seguintes detalhes firmados: 
-    <em>${ data.curso_check_combo ==='true' ? data.curso_combo + "<br/>": "" }</em>
+    <em>${ data.check_combo ==='true' ? data.curso_combo + "<br/>": "" }</em>
     <em>${data.curso_obs}</em>
   </p>
   <h2>DO FORO</h2><br/>
@@ -372,11 +372,8 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
 <!------------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------->
 <div class="folha" id="folha_5">
-<hr/>
-
   <h2>Resumo de Informações do Contrato</h2><br/>
   <div id='resumo_contrato'>
-  <hr/>
   <h3>Responsável</h3>
   <p>
    Nome:<em>${ data.resp_nome}</em>
@@ -410,31 +407,35 @@ Cláusula 20ª. Não se incluem neste contrato os serviços de reforço e recicl
     RG.:<em>${ data.aluno_rg}</em>
     </p>
     <p>
-    Tel.:<em>${ data.aluno_tel}</em>
+    Tel.:<em>${ data.aluno_tel}</em>&nbsp;&nbsp;
     Cel.:<em>${ data.aluno_cel}</em>
     </p>
     <hr/>
-    <p>
+   
   <h3>Curso:</h3>
-
-    Nome: <em>${ data.curso_nome}</em>
-    Duração: <em>${ data.curso_duracao}</em>
+  <p>
+    Nome: <em>${ data.curso_nome}</em>&nbsp;&nbsp;
+    Duração: <em>${ data.curso_duracao}</em>&nbsp;&nbsp;
    Parcelas: <em>${ data.curso_parcelas}</em>
-    Valor : <em>${ data.curso_valor}</em>
-    Desconto: <em>${ data.curso_desconto}</em>
+   </p>
+   <p>
+    Valor : <em>${ data.curso_valor}</em> &nbsp;&nbsp;
+    Desconto: <em>${ data.curso_desconto}</em>&nbsp;&nbsp;
     Valor Total: <em>${ data.curso_total}</em>
-    Início: <em>${ data.curso_inicio}</em>
-    Conclusão: <em>${ data.curso_conclusao}</em>
+    </p>
+    <p>
+    Início: <em>${converteData(data.curso_inicio)}</em>
+    Conclusão: <em>${converteData( data.curso_conclusao)}</em>
     </p>
       <p>
       Data do Contrato: <em>${ data_contrato_extenso}</em>
     </p>
     
     <p>
-    Obs.: <em>${ data.curso_check_combo ==='true' ? data.curso_combo + "<br/>": "" }</em>
+   
+    Obs.: <em>${ data.check_combo ==='true' ? data.curso_combo + "<br/>": "" }</em>
     <em>${data.curso_obs}</em>
   </p>
-  
   </div>
 </div><!--folha_5-->
 

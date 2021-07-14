@@ -109,6 +109,7 @@ function sendForm(e) {
   formValues.curso_combo = comboTextarea.innerHTML;
   formValues.curso_conclusao = f_conclusao;
 
+
   if (e.target.checkbox_resp_aluno.checked) {
     formValues.aluno_nome = "IDEM";
     formData.aluno_end = "--//--";
@@ -122,6 +123,7 @@ function sendForm(e) {
   }
   console.log("formValues:", formValues);
   result = new Promise((resolve, reject) => {
+    console.log(formValues);
     let res = ipcRenderer.invoke("submit", formValues);
 
     loadinContrato.style.display = "block";
