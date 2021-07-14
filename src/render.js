@@ -6,6 +6,7 @@ const InsertCursoInfo = require("./modules/InsertCursoInfo");
 const InputComboCheckbox = require("./modules/InputComboCheckbox");
 const InsertComboTextarea = require("./modules/InsertComboTextarea");
 const SetAttribute = require("./modules/SetAttribute");
+const RemoveAttribute = require("./modules/RemoveAttribute");
 
 
 //variáveis
@@ -74,15 +75,16 @@ function checkboxRespAluno(e) {
   if (e.target.parentElement.classList.contains("active")) {
     fieldset_aluno.classList.add("aluno_off");
     //Insere o valor "IDEM" no nome do aluno
-
     SetAttribute("#aluno_nome", 'style', "color: #fff");
-    SetAttribute("#aluno_nome", 'value', "IDEM")
+    SetAttribute("#aluno_nome", 'value', "IDEM");
+    RemoveAttribute("#aluno_nome", 'required');
   } else {
     fieldset_aluno.classList.remove("aluno_off");
     //Remove o valor "IDEM" no nome do aluno
     SetAttribute("#aluno_nome", 'style', "color:#333");
     SetAttribute("#aluno_nome", 'value', "");
-
+    SetAttribute("#aluno_nome", 'required', true);
+    
 
   }
 }
@@ -111,19 +113,18 @@ function sendForm(e) {
 
 
   if (e.target.checkbox_resp_aluno.checked) {
+    console.log('OK:-------', e.target.checkbox_resp_aluno);
     formValues.aluno_nome = "IDEM";
-    formData.aluno_end = "--//--";
-    formData.aluno_numero = "--//--";
-    formData.aluno_parentesco = "--//--";
-    formData.aluno_bairro = "--//--";
-    formData.aluno_cep = "--//--";
-    formData.aluno_rg = "--//--";
-    formData.aluno_cel = "--//--";
-    formData.aluno_tel = "--//--";
+    formValues.aluno_end = "--//--";
+    formValues.aluno_numero = "--//--";
+    formValues.aluno_parentesco = "--//--";
+    formValues.aluno_bairro = "--//--";
+    formValues.aluno_cep = "--//--";
+    formValues.aluno_rg = "--//--";
+    formValues.aluno_cel = "--//--";
+    formValues.aluno_tel = "--//--";
   }
-  console.log("formValues:", formValues);
   result = new Promise((resolve, reject) => {
-    console.log(formValues);
     let res = ipcRenderer.invoke("submit", formValues);
 
     loadinContrato.style.display = "block";

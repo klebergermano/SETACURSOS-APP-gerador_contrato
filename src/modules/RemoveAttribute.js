@@ -1,7 +1,4 @@
 function RemoveAttribute(inputName, attributeName){
-    let input = document.querySelector(inputName);
-    input.removeAttribute(attributeName);
-
+   document.querySelector(inputName).removeAttribute(attributeName);
 }
-
 module.exports = RemoveAttribute;
